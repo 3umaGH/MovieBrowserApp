@@ -1,6 +1,9 @@
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
+
+// Icons
 import { FcDoughnutChart } from "react-icons/fc";
 import { BsAndroid } from "react-icons/bs";
-
 import { FcVip } from "react-icons/fc";
 import { SidebarIcon } from "./SidebarIcon";
 import { FcInfo } from "react-icons/fc";
@@ -10,9 +13,17 @@ import { FcPrint } from "react-icons/fc";
 import { FcUnlock } from "react-icons/fc";
 
 export const Sidebar = () => {
+  const ref =
+    useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+  const { events } = useDraggable(ref);
+
   return (
     <div className="relative flex flex-col text-center top-0 w-32 h-screen bg-primary text-white shadow-md">
-      <div className=" flex flex-col text-center items-center my-2 overflow-y-auto no-scrollbar">
+      <div
+        className=" flex flex-col text-center items-center my-2 overflow-y-auto no-scrollbar"
+        {...events}
+        ref={ref}
+      >
         <SidebarIcon
           icon={<FcDoughnutChart size="40" />}
           tooltip="Piska popka 123"
