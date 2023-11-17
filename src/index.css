@@ -18,14 +18,15 @@
 }
 
 .sidebar-icon {
-  @apply flex justify-center items-center my-1 p-1.5 mt-1.5 bg-gray-900 rounded-3xl hover:rounded-md hover:bg-cyan-700 
-  transition-all duration-300 ease-linear;
+  @apply flex justify-center items-center my-1 p-1.5 mt-1.5 bg-gray-900 rounded-3xl
+  hover:rounded-2xl hover:bg-cyan-700 transition-all duration-300 ease-linear cursor-pointer
+  shadow-2xl;
 
   min-width: 70px;
   min-height: 70px
 }
 
 .sidebar-tooltip {
-  @apply absolute w-auto left-20 p-2 m-2 min-w-max rounded-md shadow-md
-    text-white bg-primary text-xs font-bold transition-transform duration-150 scale-0 origin-left;
+  @apply absolute w-auto left-24 p-2 m-2 min-w-max rounded-md shadow-md text-white
+   bg-primary text-xs font-bold transition-transform duration-150 scale-0 origin-left;
 }
