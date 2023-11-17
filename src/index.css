@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+.sidebar-icon {
+  @apply my-1 p-1.5 mt-1.5 bg-gray-900 rounded-3xl hover:rounded-md hover:bg-cyan-700 
+  transition-all duration-300 ease-linear;
+}
+
+.sidebar-tooltip {
+  @apply absolute w-auto left-20 p-2 m-2 min-w-max rounded-md shadow-md
+    text-white bg-primary text-xs font-bold transition-all duration-100 scale-0 origin-left;
+}
