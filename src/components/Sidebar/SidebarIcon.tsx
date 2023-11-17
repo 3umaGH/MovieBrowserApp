@@ -1,5 +1,4 @@
-import { RiLightbulbLine } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const SidebarIcon = ({
   icon,
