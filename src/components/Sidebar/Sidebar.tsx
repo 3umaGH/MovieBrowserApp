@@ -21,14 +21,12 @@ export const Sidebar = () => {
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);
 
-  const toggleCollapsed = () => {
-    setCollapsed(!isCollapsed);
-  };
+  const toggleCollapsed = () => setCollapsed(!isCollapsed);
 
   return (
     <div
       className={`relative flex flex-col text-center top-0 w-${
-        isCollapsed ? "0" : "28"
+        isCollapsed ? "1" : "28"
       } h-screen bg-primary text-white shadow-slate-800 shadow-2xl transition-all duration-500 ease-in-out`}
     >
       <div
