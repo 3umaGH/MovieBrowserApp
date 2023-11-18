@@ -65,7 +65,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
           <div className="flex justify-between items-center mt-4">
             <button className="flex items-center border-cyan-950 border-2 py-1 px-2 text-cyan-600 hover:bg-cyan-800 hover:text-cyan-50 transition-colors duration-300 cursor-pointer">
               <IoMdPlay className="mr-1" />
-              Watch Trailer
+              Movie Details
             </button>
 
             <div className="flex gap-3 text-cyan-600">
