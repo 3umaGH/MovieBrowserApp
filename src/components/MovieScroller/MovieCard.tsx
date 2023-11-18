@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { useState } from "react";
 import { MdOutlineStarPurple500 } from "react-icons/md";

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
-import { CDN_PATH, Movie } from "../../constants";
+import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
 
 export const MovieRow = ({

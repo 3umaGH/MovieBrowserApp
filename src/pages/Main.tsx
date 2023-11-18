@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../components/MovieScroller/MovieCard";
 import { MovieRow } from "../components/MovieScroller/MovieRow";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { fetchPopularMovies } from "../api/api";
-import { CDN_PATH, Movie } from "../constants";
+import { Movie } from "../constants";
 
 type PopularMoviesApiResponse = {
         page: number;
@@ -32,7 +31,7 @@ export const Main = () => {
       <div className="overflow-x-hidden">
         <MovieRow title="Featuring Movies" movies={popularMovies || []}/>
       </div>
-      
+
     </div>
   </div>
   )
