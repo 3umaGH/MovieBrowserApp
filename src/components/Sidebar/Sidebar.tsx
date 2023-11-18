@@ -25,9 +25,10 @@ export const Sidebar = () => {
 
   return (
     <div
-      className={`relative flex flex-col text-center top-0 w-${
-        isCollapsed ? "1" : "28"
-      } h-screen bg-primary text-white shadow-slate-800 shadow-2xl transition-all duration-500 ease-in-out`}
+      className={`relative flex flex-col text-center top-0 ${
+        isCollapsed ? "w-0" : "w-24"
+      }
+       h-screen bg-primary text-white shadow-slate-800 shadow-2xl transition-all duration-500 ease-in-out`}
     >
       <div
         className="absolute flex h-screen self-end w-4 left-full top-0 shadow-inner cursor-pointer"
@@ -36,9 +37,9 @@ export const Sidebar = () => {
       <div className="absolute flex bg-zinc-900 h-screen self-end w-1 top-0 shadow-inner"></div>
 
       <div
-        className={`scale-${
-          isCollapsed ? "100" : "0"
-        } opacity-50 relative top-1/2 left-2 transition-all duration-300 cursor-pointer`}
+        className={`${
+          isCollapsed ? "scale-100" : "scale-0"
+        } opacity-50 absolute top-1/2 left-2 transition-all duration-300 cursor-pointer`}
         onClick={toggleCollapsed}
       >
         <MdOutlineArrowForwardIos
