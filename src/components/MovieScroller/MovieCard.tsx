@@ -15,7 +15,7 @@ export const MovieCard = ({ img }: { img: string }) => {
   const height = "550px";
 
   return (
-    <div className="rounded-b-xl group" style={{ height: "100%" }}>
+    <div className="rounded-b-xl group " style={{ height: "100%" }}>
       <div
         className="rounded-xl"
         style={{
@@ -24,6 +24,7 @@ export const MovieCard = ({ img }: { img: string }) => {
           backgroundImage: `url(${img})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          
         }}
       />
 
