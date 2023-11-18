@@ -12,7 +12,7 @@ export const MovieCard = ({ img }: { img: string }) => {
   const toggleFavorite = () => setFavorited(!isFavorited);
 
   return (
-    <div className="rounded-b-xl group" style={{ height: "500px" }}>
+    <div className="rounded-b-xl group my-5" style={{ height: "66vh" }}>
       <div
         className="relative rounded-xl w-80 h-4/5"
         style={{
@@ -22,7 +22,7 @@ export const MovieCard = ({ img }: { img: string }) => {
           backgroundPosition: "center",
         }}
       />
-      <div style={{height:"0px"}}>
+      <div style={{ height: "70vh" }}>
         <div
           className="p-4 opacity-0 -translate-y-16 h-fit group-hover:translate-y-16 group-hover:opacity-100 transition-all duration-500 text-slate-100 rounded-b-xl"
           style={{
