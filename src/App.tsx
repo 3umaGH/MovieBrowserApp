@@ -27,7 +27,7 @@ function App() {
             <MovieCard img="https://www.themoviedb.org/t/p/original/iop4oO1zaPt1FBlskre6lApd7B7.jpg" />
           </MovieRow>
 
-          <div className=" -mt-56">
+          <div className="">
             <MovieRow title="Comedy 😝">
               <MovieCard img="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f6e7b5811271dc883aa8_batman-min.png" />
               <MovieCard img="https://i.redd.it/z8clg6gibvu71.jpg" />

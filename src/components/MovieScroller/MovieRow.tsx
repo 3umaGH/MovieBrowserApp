@@ -24,7 +24,7 @@ export const MovieRow = ({
       <div
         {...events}
         ref={ref}
-        className="flex gap-14 m-2 mt-8 overflow-x-auto overflow-y-clip no-scrollbar h-min"
+        className="flex gap-4 m-2 mt-8 overflow-x-auto overflow-y-clip no-scrollbar h-min"
       >
         {children}
       </div>
