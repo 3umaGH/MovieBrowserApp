@@ -7,7 +7,7 @@ function App() {
       <div className="flex flex-auto">
         <Sidebar />
 
-        <div className=" h-screen overflow-y-auto">
+        <div className="overflow-y-auto">
           <MovieRow title="Sci-Fi 👽">
             <MovieCard img="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f6e7b5811271dc883aa8_batman-min.png" />
             <MovieCard img="https://i.redd.it/z8clg6gibvu71.jpg" />
