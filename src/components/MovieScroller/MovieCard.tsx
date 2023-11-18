@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { IoMdPlay } from "react-icons/io";
 
+import { IoMdShare } from "react-icons/io";
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md";
+
 export const MovieCard = ({ img }: { img: string }) => {
+  const [isFavorited, setFavorited] = useState(false);
+
+  const toggleFavorite = () => setFavorited(!isFavorited);
+
   const width = "350px";
   const height = "550px";
 
@@ -19,7 +28,7 @@ export const MovieCard = ({ img }: { img: string }) => {
       />
 
       <div
-        className="relative p-4 opacity-100  group-hover:block group-hover:-translate-y-6 group-hover:opacity-100 transition-all duration-500 text-slate-100 rounded-b-xl"
+        className="relative p-4 opacity-0  group-hover:block group-hover:-translate-y-6 group-hover:opacity-100 transition-all duration-500 text-slate-100 rounded-b-xl"
         style={{
           maxWidth: "100%",
           maxHeight: height,
@@ -50,6 +59,34 @@ export const MovieCard = ({ img }: { img: string }) => {
             depression of the 1930s the first one seen is an eldery woman
             stating her father was a farmer but did not start that way
           </p>
+
+          <div className="flex justify-between items-center mt-4">
+            <button className="flex items-center border-cyan-950 border-2 py-1 px-2 text-cyan-600 hover:bg-cyan-800 hover:text-cyan-50 transition-colors duration-300 cursor-pointer">
+              <IoMdPlay className="mr-1" />
+              Watch Trailer
+            </button>
+
+            <div className="flex gap-3 text-cyan-600">
+              {isFavorited ? (
+                <MdFavorite
+                  size="25"
+                  className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer hover:scale-110"
+                  onClick={toggleFavorite}
+                />
+              ) : (
+                <MdFavoriteBorder
+                  size="25"
+                  className="hover:text-cyan-400 transition-colors duration-300 cursor-pointer hover:scale-110"
+                  onClick={toggleFavorite}
+                />
+              )}
+
+              <IoMdShare
+                size="25"
+                className="hover:text-cyan-400 transition-colors duration-100 cursor-pointer hover:scale-110"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
