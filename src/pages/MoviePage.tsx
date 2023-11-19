@@ -19,7 +19,7 @@ export const MoviePage = () => {
 
   return (
     movie && (
-      <div className="flex w-screen p-10">
+      <div className="flex w-full p-10">
         <MovieDetailsSection movieData={movie} />
       </div>
     )
