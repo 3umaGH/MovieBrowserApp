@@ -18,6 +18,13 @@ export const fetchPopularMovies = async () => {
   );
 };
 
+
+export const fetchTopRatedMovies = async () => {
+  return await axios.get(
+    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=vote_average.desc&certification_country=US&certification.lte=R&with_original_language=en`
+  );
+};
+
 export const fetchMovieDetails = async (id: String) => {
   return await axios.get(
     `${API_BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=release_dates`

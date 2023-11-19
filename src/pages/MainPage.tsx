@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MovieRow } from "../components/MovieScroller/MovieRow";
 import { Sidebar } from "../components/Sidebar/Sidebar";
-import { fetchPopularMovies } from "../api/api";
+import { fetchPopularMovies, fetchTopRatedMovies } from "../api/api";
 import { Movie } from "../constants";
 
 type PopularMoviesApiResponse = {
@@ -13,11 +13,17 @@ type PopularMoviesApiResponse = {
 
 export const MainPage = () => {
   const [popularMovies, setPopularMovies] = useState<Movie[]>();
+  const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>();
 
   useEffect(() => {
     fetchPopularMovies().then((response) => {
       const apiResponse = response.data as PopularMoviesApiResponse;
       setPopularMovies(apiResponse.results);
+    });
+
+    fetchTopRatedMovies().then((response) => {
+      const apiResponse = response.data as PopularMoviesApiResponse;
+      setTopRatedMovies(apiResponse.results);
     });
   }, []);
 
@@ -27,11 +33,10 @@ export const MainPage = () => {
         <Sidebar />
 
         <div className="overflow-x-hidden w-screen">
-          <MovieRow movies={popularMovies || []} />
+          <MovieRow title="💯 Featuring Movies 💯" movies={popularMovies || []} />
 
-          <MovieRow movies={popularMovies || []} />
+          <MovieRow title="🏆 Top rated Movies 🏆" movies={topRatedMovies || []} />
 
-          <MovieRow movies={popularMovies || []} />
         </div>
       </div>
     </div>

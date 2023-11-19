@@ -4,8 +4,10 @@ import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
 
 export const MovieRow = ({
+  title,
   movies,
 }: {
+  title: String;
   movies: Movie[];
 }) => {
   const ref =
@@ -13,7 +15,10 @@ export const MovieRow = ({
   const { events } = useDraggable(ref);
   return (
     <>
-     
+      <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
+    <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
+      <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
+
         <div
         {...events}
         ref={ref}
