@@ -20,6 +20,6 @@ export const fetchPopularMovies = async () => {
 
 export const fetchMovieDetails = async (id: String) => {
   return await axios.get(
-    `${API_BASE_URL}/movie/${id}?api_key=${API_KEY}`
+    `${API_BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=release_dates`
   );
 };
