@@ -30,12 +30,12 @@ export const MovieScore = ({ score }: { score: number }) => {
         })}
       >
         <span
-          className="font-roboto font-semibold text-center mt-1"
+          className="font-roboto font-semibold text-center mt-1 cursor-default"
           style={{ fontSize: 29 }}
         >
           {((score / 10) * 100).toFixed(0)}
           <span
-            className=" font-roboto align-text-top"
+            className=" font-roboto align-text-top cursor-default"
             style={{ fontSize: 14 }}
           >
             %
