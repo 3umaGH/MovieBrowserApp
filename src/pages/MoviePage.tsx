@@ -21,7 +21,7 @@ export const MoviePage = () => {
 
   return (
     <div className="bg-zinc-900">
-      <div className="relative flex w-screen justify-center p-14 md:p-32">
+      <div className="relative flex w-screen justify-center p-10 md:p-32 bg-zinc-900">
         <Link to="/">
         <IoArrowBack
           color="white"
