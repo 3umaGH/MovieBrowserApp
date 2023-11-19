@@ -10,6 +10,9 @@ export default {
         secondary: "#292a2e",
         third: "#caccce",
       },
+      fontFamily: {
+        'roboto': ['Roboto', 'Arial', 'sans-serif'],
+      }
     },
   },
   plugins: [],
