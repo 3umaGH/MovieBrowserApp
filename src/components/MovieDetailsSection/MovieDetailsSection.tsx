@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { CDN_PATH, MovieDetails } from "../constants";
+import { CDN_PATH, MovieDetails } from "../../constants";
 
 import "react-circular-progressbar/dist/styles.css";
-import { MovieScore } from "./MovieScore";
+import { MovieScore } from "../MovieScore";
+import { DetailsActionsComponent } from "./DetailsActionsComponent";
 
 export const MovieDetailsSection = ({
   movieData,
@@ -32,7 +33,7 @@ export const MovieDetailsSection = ({
       <div className="grid grid-cols-1 lg:grid-cols-3">
         <div className="col-span-1">
           <img
-            className="w-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
+            className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
             src={CDN_PATH + movie.poster_path}
           ></img>
         </div>
@@ -63,12 +64,12 @@ export const MovieDetailsSection = ({
             >
               <img
                 src={CDN_PATH + movie.backdrop_path}
-                className="w-full poster-scale-animation"
+                className="w-full poster-scale-animation hidden md:block"
                 style={{
                   filter: "blur(2px) brightness(50%)",
                   borderRadius: "0px",
                 }}
-              ></img>
+              />
             </div>
           )}
 
@@ -110,7 +111,7 @@ export const MovieDetailsSection = ({
               </span>
             </div>
 
-            <div className="flex w-full justify-center lg:justify-start">
+            <div className="flex w-full justify-center lg:justify-start mt-12 md:mt-0">
               {movie.vote_average > 0 && (
                 <div className="flex items-center">
                   <div className="w-24 h-24 mt-5 mx-2.5">
@@ -127,7 +128,7 @@ export const MovieDetailsSection = ({
               )}
             </div>
 
-            <p className="mt-5 text-2xl opacity-65 text-stone-300 ">
+            <p className="mt-5 w-full text-2xl opacity-65 text-stone-300 text-center lg:text-left">
               <i>{movie.tagline}</i>
             </p>
 
@@ -136,6 +137,8 @@ export const MovieDetailsSection = ({
             <p className="max-w-4xl break-words mt-2.5 text-center lg:text-left">
               {movie.overview}
             </p>
+
+            <DetailsActionsComponent />
           </div>
         </div>
       </div>

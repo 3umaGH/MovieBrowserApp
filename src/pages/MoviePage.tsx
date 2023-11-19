@@ -4,7 +4,7 @@ import { fetchMovieDetails } from "../api/api";
 import { MovieDetails } from "../constants";
 
 import "react-circular-progressbar/dist/styles.css";
-import { MovieDetailsSection } from "../components/MovieDetailsSection";
+import { MovieDetailsSection } from "../components/MovieDetailsSection/MovieDetailsSection";
 
 export const MoviePage = () => {
   const [movie, setMovieData] = useState<MovieDetails>();
