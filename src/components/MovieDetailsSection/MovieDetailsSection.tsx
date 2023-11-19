@@ -30,11 +30,15 @@ export const MovieDetailsSection = ({
 
   return (
     movie && (
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="">
+        <div className="grid grid-cols-1 lg:grid-cols-3">
         <div className="col-span-1">
           <img
-            className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
+            className="w-full h-full min-w-max rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
             src={CDN_PATH + movie.poster_path}
+            style={{
+              minWidth:"300px"
+            }}
           ></img>
         </div>
 
@@ -73,8 +77,8 @@ export const MovieDetailsSection = ({
             </div>
           )}
 
-          <div className="flex flex-col items-start p-4 z-10 text-center lg:text-left">
-            <div className="text-xl font-roboto">
+          <div className="flex flex-col w-full items-start p-4 z-10 text-center lg:text-left">
+            <div className="text-xl font-roboto w-full">
               <h1 className="font-roboto text-4xl mb-1.5">
                 {movie.title}{" "}
                 <span className={`text-gray-200 font-thin`}>
@@ -111,7 +115,7 @@ export const MovieDetailsSection = ({
               </span>
             </div>
 
-            <div className="flex w-full justify-center lg:justify-start mt-12 md:mt-0">
+            <div className="flex w-full justify-center lg:justify-start mt-0">
               {movie.vote_average > 0 && (
                 <div className="flex items-center">
                   <div className="w-24 h-24 mt-5 mx-2.5">
@@ -141,6 +145,7 @@ export const MovieDetailsSection = ({
             <DetailsActionsComponent />
           </div>
         </div>
+      </div>
       </div>
     )
   );
