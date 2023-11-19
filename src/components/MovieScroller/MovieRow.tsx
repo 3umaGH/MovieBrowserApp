@@ -19,7 +19,7 @@ export const MovieRow = ({
       <div className="mt-8">
         <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
-        <h2 className="text-center font-sans text-5xl text-stone-200">
+        <h2 className="text-center font-sans text-5xl text-stone-300">
           {title}
         </h2>
         <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
