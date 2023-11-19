@@ -31,7 +31,7 @@ export const MovieDetailsSection = ({
   return (
     movie && (
       <div className="grid grid-cols-1 lg:grid-cols-3">
-        <div className="col-span-1">
+        <div className="col-span-1 ">
           <img
             className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
             src={CDN_PATH + movie.poster_path}
@@ -73,7 +73,7 @@ export const MovieDetailsSection = ({
             </div>
           )}
 
-          <div className="flex flex-col items-start p-4 z-10 text-center lg:text-left">
+          <div className="flex flex-col w-full items-start p-4 z-10 text-center lg:text-left">
             <div className="text-xl font-roboto">
               <h1 className="font-roboto text-4xl mb-1.5">
                 {movie.title}{" "}
