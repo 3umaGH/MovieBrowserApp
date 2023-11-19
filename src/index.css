@@ -23,7 +23,7 @@
   shadow-2xl;
 
   min-width: 70px;
-  min-height: 70px
+  min-height: 70px;
 }
 
 .sidebar-tooltip {
@@ -43,24 +43,30 @@
 
 @keyframes scaleAnimation {
   0% {
-    transform:scale(2) rotate(0deg);
+    transform: scale(2) rotate(0deg);
   }
   50% {
-    transform:scale(2.4) rotate(10deg);
+    transform: scale(2.4) rotate(10deg);
   }
   100% {
-    transform:scale(2) rotate(0deg);
+    transform: scale(2) rotate(0deg);
   }
 }
 
 @keyframes posterScaleAnimation {
   0% {
-    transform:scale(1.2) rotate(0deg);
+    transform: scale(1.2) rotate(0deg);
   }
   50% {
-    transform:scale(1.4) rotate(5deg);
+    transform: scale(1.4) rotate(5deg);
   }
   100% {
-    transform:scale(1.2) rotate(0deg);
+    transform: scale(1.2) rotate(0deg);
   }
 }
+
+.details-action-button {
+  @apply w-24 h-16 bg-slate-800 rounded-full flex items-center justify-center 
+  cursor-pointer hover:bg-slate-700 focus:ring-2 ring-slate-600 active:scale-75 transition-transform;
+}
+
