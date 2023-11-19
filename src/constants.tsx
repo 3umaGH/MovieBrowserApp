@@ -33,6 +33,9 @@ export type MovieDetails = CommonMovieProperties & {
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
+  release_dates: {
+    results: CountryRelease[];
+};
 };
 
 export type Genre = {
@@ -57,3 +60,17 @@ export type SpokenLanguage = {
   iso_639_1: string;
   name: string;
 };
+
+export type ReleaseDate = {
+  certification: string;
+  descriptors: string[];
+  iso_639_1: string;
+  note: string;
+  release_date: string;
+  type: number;
+}
+
+export type CountryRelease = {
+  iso_3166_1: string;
+  release_dates: ReleaseDate[];
+}
