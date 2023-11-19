@@ -30,11 +30,15 @@ export const MovieDetailsSection = ({
 
   return (
     movie && (
-      <div className="grid grid-cols-1 lg:grid-cols-3">
-        <div className="col-span-1 ">
+      <div className="">
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="col-span-1">
           <img
-            className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
+            className="w-full h-full min-w-max rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
             src={CDN_PATH + movie.poster_path}
+            style={{
+              minWidth:"300px"
+            }}
           ></img>
         </div>
 
@@ -141,6 +145,7 @@ export const MovieDetailsSection = ({
             <DetailsActionsComponent />
           </div>
         </div>
+      </div>
       </div>
     )
   );

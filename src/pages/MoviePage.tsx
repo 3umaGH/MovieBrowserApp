@@ -20,17 +20,18 @@ export const MoviePage = () => {
   }, []);
 
   return (
-    
-      <div className="relative flex w-screen h-screen justify-center p-10 md:p-10 bg-zinc-900">
+    <div className="bg-zinc-900">
+      <div className="relative flex w-screen justify-center p-14 md:p-32">
         <Link to="/">
         <IoArrowBack
           color="white"
           size={45}
-          className="absolute top-16 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer"
+          className=" absolute mt-4 top-0 -left-2 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer"
         />
         </Link>
         {movie && (
         <MovieDetailsSection movieData={movie} />)}
+      </div>
       </div>
     
   );
