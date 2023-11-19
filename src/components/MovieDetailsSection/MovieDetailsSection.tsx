@@ -30,11 +30,11 @@ export const MovieDetailsSection = ({
 
   return (
     movie && (
-      <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="" style={{width:"100%"}}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 ">
           <div className="col-span-1">
             <img
-              className="w-full h-full min-w-max rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
+              className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
               src={CDN_PATH + movie.poster_path}
               style={{
                 minWidth: "200px",
@@ -50,7 +50,7 @@ export const MovieDetailsSection = ({
               <img
                 id="movie-background"
                 src={CDN_PATH + movie.backdrop_path}
-                className="scale-animation absolute w-full h-full -m-16 z-0"
+                className="scale-animation w-full h-full -m-16 z-0"
                 style={{
                   filter: "blur(6px) brightness(40%)",
                   transform: "scale(2)",
@@ -77,7 +77,7 @@ export const MovieDetailsSection = ({
               </div>
             )}
 
-            <div className="flex flex-col w-full items-start p-4 z-10 text-center lg:text-left">
+            <div className="flex flex-col w-full items-start py-4 px-2 z-10 text-center lg:text-left">
               <div className="text-xl font-roboto w-full">
                 <h1 className="font-roboto text-4xl mb-1.5">
                   {movie.title}{" "}

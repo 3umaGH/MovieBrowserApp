@@ -23,19 +23,15 @@ export const MainPage = () => {
 
   return (
     <div className=" bg-zinc-900">
-      <div className="flex flex-auto overflow-y-scroll h-screen no-scrollbar">
+      <div className="flex flex-auto overflow-y-scroll no-scrollbar">
         <Sidebar />
 
         <div className="overflow-x-hidden w-screen">
-          <div>
-            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
-          </div>
-          <div className="-mt-44">
-            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
-          </div>
-          <div className="-mt-44">
-            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
-          </div>
+          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+
+          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+
+          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
         </div>
       </div>
     </div>

@@ -17,6 +17,20 @@
   }
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(24,24,27);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 .sidebar-icon {
   @apply flex justify-center items-center my-1 p-1.5 mt-1.5 bg-gray-900 rounded-3xl
   hover:rounded-2xl hover:bg-cyan-700 transition-all duration-300 ease-linear cursor-pointer
