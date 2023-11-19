@@ -105,24 +105,24 @@ export const MoviePage = () => {
       <div className="flex justify-center w-screen p-10">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div className="col-span-1">
-            <img className="w-full rounded-l-3xl" src={CDN_PATH + movie.poster_path}></img>
+            <img className="w-full rounded-t-2xl md:rounded-l-2xl md:rounded-r-none" src={CDN_PATH + movie.poster_path}></img>
           </div>
 
           <div className="relative col-span-2 flex items-start md:items-center text-white">
-            <div className="absolute overflow-hidden w-full h-full rounded-r-3xl">
-              <img
+            <div className="absolute overflow-hidden w-full h-full rounded-b-2xl md:rounded-r-2xl md:rounded-b-none">
+              <img id="movie-background"
                 src={CDN_PATH + movie.backdrop_path}
-                className="absolute w-full h-full -m-16 z-0"
-                style={{ filter: "blur(100px) brightness(85%)", transform: "scale(2)", }}
+                className="scale-animation absolute w-full h-full -m-16 z-0"
+                style={{ filter: "blur(6px) brightness(85%)", transform: "scale(2)", }}
               ></img>
             </div>
 
-            <div className="absolute w-full overflow-hidden" style={{boxShadow: "0 0 50px rgba(0, 0, 0, 0.5)", opacity:"0.8"}}>
+            <div className="absolute w-full overflow-hidden" style={{boxShadow: "0 0 50px rgba(0, 0, 0, 0.5)", opacity:"0.95"}}>
               <img
                 src={CDN_PATH + movie.backdrop_path}
-                className="w-full"
+                className="w-full poster-scale-animation"
                 style={{
-                  filter:"blur(2px) brightness(90%)",
+                  filter:"blur(2px) brightness(70%)",
                   borderRadius:"0px",
                 }}
               ></img>
@@ -130,7 +130,7 @@ export const MoviePage = () => {
 
             <div className="relative p-4 z-10">
               {/*Title*/}
-              <h1 className="font-mono font-semibold text-4xl">
+              <h1 className=" font-roboto text-4xl">
                 {movie.title}{" "}
                 <span className={`text-gray-300 font-thin`}>
                   ({releaseDate.getFullYear()})

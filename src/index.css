@@ -30,3 +30,38 @@
   @apply absolute w-auto left-24 p-2 m-2 min-w-max rounded-md shadow-md text-white
    bg-primary text-xs font-bold transition-transform duration-150 scale-0 origin-left;
 }
+
+
+.scale-animation {
+  transition: transform 20s ease-in;
+  animation: posterScaleAnimation 120s infinite;
+}
+
+.poster-scale-animation {
+  transition: transform 20s ease-in;
+  animation: posterScaleAnimation 60s infinite;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform:scale(2) rotate(0deg);
+  }
+  50% {
+    transform:scale(2.4) rotate(10deg);
+  }
+  100% {
+    transform:scale(2) rotate(0deg);
+  }
+}
+
+@keyframes posterScaleAnimation {
+  0% {
+    transform:scale(1.2) rotate(0deg);
+  }
+  50% {
+    transform:scale(1.4) rotate(5deg);
+  }
+  100% {
+    transform:scale(1.2) rotate(0deg);
+  }
+}
