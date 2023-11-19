@@ -24,6 +24,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <div
       className="rounded-b-xl group py-1 cursor-default"
+<<<<<<< HEAD
       style={{ height: "100vh" }}
     >
       <Link to={`/movie/${movie.id}`}>
@@ -36,6 +37,18 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
             backgroundPosition: "center",
             minWidth: "100%",
             minHeight: "70%",
+=======
+      style={{ height: "66vh" }}
+    >
+      <Link to={`/movie/${movie.id}`}>
+        <div
+          className="relative rounded-xl w-80 h-4/5 cursor-pointer"
+          style={{
+            backgroundImage: `url(${CDN_PATH + movie.poster_path})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+>>>>>>> 451542e1ac628a99ffa96b671d6d0604491ab26b
           }}
         />
 
