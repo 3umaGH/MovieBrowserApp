@@ -18,8 +18,6 @@ export const MainPage = () => {
         fetchPopularMovies().then((response) => {
             const apiResponse = response.data as PopularMoviesApiResponse;
             setPopularMovies(apiResponse.results);
-
-            console.log(apiResponse)
         })
     },[])
 
