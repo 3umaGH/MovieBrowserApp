@@ -11,7 +11,7 @@ type PopularMoviesApiResponse = {
         total_results: number;
 }
 
-export const Main = () => {
+export const MainPage = () => {
     const [popularMovies, setPopularMovies] = useState<Movie[]>();
 
     useEffect(() => {
