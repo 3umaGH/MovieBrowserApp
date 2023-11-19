@@ -115,7 +115,7 @@ export const MovieDetailsSection = ({
               </span>
             </div>
 
-            <div className="flex w-full justify-center lg:justify-start mt-12 md:mt-0">
+            <div className="flex w-full justify-center lg:justify-start mt-0">
               {movie.vote_average > 0 && (
                 <div className="flex items-center">
                   <div className="w-24 h-24 mt-5 mx-2.5">
