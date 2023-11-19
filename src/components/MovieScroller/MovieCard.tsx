@@ -21,9 +21,10 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
   };
 
   return (
-    <div className="rounded-b-xl group py-1" style={{ height: "66vh" }}>
+    <div className="rounded-b-xl group py-1 cursor-default" style={{ height: "66vh" }}>
+        
       <div
-        className="relative rounded-xl w-80 h-4/5"
+        className="relative rounded-xl w-80 h-4/5 cursor-pointer"
         style={{
           backgroundImage: `url(${CDN_PATH + movie.poster_path})`,
           backgroundSize: "cover",
