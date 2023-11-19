@@ -78,7 +78,7 @@ export const MovieDetailsSection = ({
           )}
 
           <div className="flex flex-col w-full items-start p-4 z-10 text-center lg:text-left">
-            <div className="text-xl font-roboto">
+            <div className="text-xl font-roboto w-full">
               <h1 className="font-roboto text-4xl mb-1.5">
                 {movie.title}{" "}
                 <span className={`text-gray-200 font-thin`}>
