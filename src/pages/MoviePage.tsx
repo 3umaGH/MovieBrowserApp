@@ -81,7 +81,7 @@ export const MoviePage = () => {
               </div>
             )}
 
-            <div className="flex flex-col items-start  p-4 z-10">
+            <div className="flex flex-col items-start p-4 z-10 text-center lg:text-left">
               <div className="text-xl font-roboto">
                 <h1 className="font-roboto text-4xl mb-1.5">
                   {movie.title}{" "}
@@ -119,7 +119,7 @@ export const MoviePage = () => {
                 </span>
               </div>
 
-              <div className="flex items-center">
+              <div className="flex w-full justify-center lg:justify-start">
                 {movie.vote_average > 0 && (
                   <div className="flex items-center">
                     <div className="w-24 h-24 mt-5 mx-2.5">
@@ -136,13 +136,13 @@ export const MoviePage = () => {
                 )}
               </div>
 
-              <p className="mt-5 text-2xl opacity-65 text-stone-300">
+              <p className="mt-5 text-2xl opacity-65 text-stone-300 ">
                 <i>{movie.tagline}</i>
               </p>
 
-              <p className="font-semibold text-2xl mt-5">Overview</p>
+              <p className="font-semibold text-2xl mt-5 ">Overview</p>
 
-              <p className="max-w-4xl break-words mt-2.5">{movie.overview}</p>
+              <p className="max-w-4xl break-words mt-2.5 text-center lg:text-left">{movie.overview}</p>
             </div>
           </div>
         </div>
