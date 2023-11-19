@@ -27,7 +27,7 @@ export const MovieRow = ({
       <div
         {...events}
         ref={ref}
-        className="flex gap-4 m-2 mt-8 overflow-x-scroll no-scrollbar"
+        className="flex gap-2 m-2 mt-8 overflow-x-scroll no-scrollbar"
         style={{cursor:"default", minHeight:"740px"}}
       >
         {movies && movies.length > 0 && (

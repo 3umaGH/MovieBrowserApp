@@ -24,7 +24,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <div
       className="rounded-b-xl group py-1 cursor-default"
-      style={{ height: "50vh" }}
+      style={{ height: "100vh" }}
     >
       <Link to={`/movie/${movie.id}`}>
         <div
