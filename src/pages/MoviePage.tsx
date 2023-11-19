@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../api/api";
 import { CDN_PATH, MovieDetails } from "../constants";
 
+import "react-circular-progressbar/dist/styles.css";
+import { MovieScore } from "../components/MovieScore";
+
 export const MoviePage = () => {
   const [movie, setMovieData] = useState<MovieDetails>({
     adult: false,
@@ -105,68 +108,94 @@ export const MoviePage = () => {
       <div className="flex justify-center w-screen p-10">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div className="col-span-1">
-            <img className="w-full rounded-t-2xl md:rounded-l-2xl md:rounded-r-none" src={CDN_PATH + movie.poster_path}></img>
+            <img
+              className="w-full rounded-t-2xl md:rounded-l-2xl md:rounded-r-none"
+              src={CDN_PATH + movie.poster_path}
+            ></img>
           </div>
 
-          <div className="relative col-span-2 flex items-start md:items-center text-white">
-            <div className="absolute overflow-hidden w-full h-full rounded-b-2xl md:rounded-r-2xl md:rounded-b-none">
-              <img id="movie-background"
+          <div className="relative col-span-2 flex items-start md:items-center text-white overflow-x-hidden">
+            <div className="absolute overflow-hidden w-full h-full rounded-b-2xl md:rounded-r-2xl md:rounded-b-none bg-gray-500 opacity-100 " style={{boxShadow: "inset 0 0 100px rgba(0, 0, 0, 0.5)"}}>
+              <img
+                id="movie-background"
                 src={CDN_PATH + movie.backdrop_path}
                 className="scale-animation absolute w-full h-full -m-16 z-0"
-                style={{ filter: "blur(6px) brightness(85%)", transform: "scale(2)", }}
-              ></img>
-            </div>
-
-            <div className="absolute w-full overflow-hidden" style={{boxShadow: "0 0 50px rgba(0, 0, 0, 0.5)", opacity:"0.95"}}>
-              <img
-                src={CDN_PATH + movie.backdrop_path}
-                className="w-full poster-scale-animation"
                 style={{
-                  filter:"blur(2px) brightness(70%)",
-                  borderRadius:"0px",
+                  filter: "blur(6px) brightness(40%)",
+                  transform: "scale(2)",
                 }}
               ></img>
             </div>
 
-            <div className="relative p-4 z-10">
-              {/*Title*/}
-              <h1 className=" font-roboto text-4xl">
-                {movie.title}{" "}
-                <span className={`text-gray-300 font-thin`}>
-                  ({releaseDate.getFullYear()})
-                </span>
-              </h1>
-              <span
-                className={`text-lg font-thin border-white border-2 rounded-md w-fit px-0.5 py-0`}
+            {movie.backdrop_path && ( // some movies don't have a backdrop.
+              <div
+                className="absolute w-full overflow-hidden"
+                style={{
+                  boxShadow: "0 0 50px rgba(0, 0, 0, 0.5)",
+                  opacity: "1",
+                }}
               >
-                PG-13
-              </span>
+                <img
+                  src={CDN_PATH + movie.backdrop_path}
+                  className="w-full poster-scale-animation"
+                  style={{
+                    filter: "blur(2px) brightness(50%)",
+                    borderRadius: "0px",
+                  }}
+                ></img>
+              </div>
+            )}
 
-              <span className="ml-2 text-xl font-thin">
-                {movie.release_date}
-              </span>
-
-              <span className="ml-2 text-xl font-thin">
-                •{" "}
-                {movie.genres.map((genre, index, array) => (
-                  <span key={genre.id}>
-                    {genre.name}
-                    {array.length - 1 === index ? "" : ", "}
+            <div className="flex flex-col items-start  p-4 z-10">
+              <div className="text-xl font-roboto">
+                <h1 className="font-roboto text-4xl mb-1.5">
+                  {movie.title}{" "}
+                  <span className={`text-gray-200 font-thin`}>
+                    ({releaseDate.getFullYear()})
                   </span>
-                ))}
-              </span>
+                </h1>
 
-              <span className="ml-2 text-xl font-thin">
-                • {convertMinutesToHoursAndMinutes(movie.runtime)}
-              </span>
+                <span
+                  className={`border-stone-400 border-2 rounded-md w-fit px-1 py-0.5`}
+                >
+                  PG-13
+                </span>
 
-              <h3>Rating</h3>
+                <span className="ml-2">
+                  {movie.release_date.replaceAll("-", "/")}
+                </span>
 
-              <p>{movie.tagline}</p>
+                <span className="ml-2 font-light">
+                  •{" "}
+                  {movie.genres.map((genre, index, array) => (
+                    <span key={genre.id}>
+                      {genre.name}
+                      {array.length - 1 === index ? "" : ", "}
+                    </span>
+                  ))}
+                </span>
 
-              <p className="font-semibold text-2xl ">Overview</p>
+                <span className="ml-2 font-light">
+                  • {convertMinutesToHoursAndMinutes(movie.runtime)}
+                </span>
+              </div>
 
-              <p className="max-w-4xl break-words">{movie.overview}</p>
+              <div className="flex items-center">
+                <div className="w-24 h-24 mt-5 mx-2.5">
+                  <MovieScore score={movie.vote_average} />
+                </div>
+                <div className="pt-3.5">
+                  <span className="font-roboto font-medium text-2xl">User<br/>Score</span>
+                </div>
+              </div>
+
+              <p className="mt-5 text-2xl opacity-65 text-stone-300">
+                <i>{movie.tagline}</i>
+              </p>
+
+              <p className="font-semibold text-2xl mt-5">Overview</p>
+
+              <p className="max-w-4xl break-words mt-2.5">{movie.overview}</p>
             </div>
           </div>
         </div>
