@@ -4,11 +4,8 @@ import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
 
 export const MovieRow = ({
-  title,
-
   movies,
 }: {
-  title: String;
   movies: Movie[];
 }) => {
   const ref =

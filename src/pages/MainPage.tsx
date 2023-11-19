@@ -27,11 +27,11 @@ export const MainPage = () => {
         <Sidebar />
 
         <div className="overflow-x-hidden w-screen">
-          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          <MovieRow movies={popularMovies || []} />
 
-          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          <MovieRow movies={popularMovies || []} />
 
-          <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          <MovieRow movies={popularMovies || []} />
         </div>
       </div>
     </div>
