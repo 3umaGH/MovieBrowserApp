@@ -37,11 +37,7 @@ export const MovieDetailsSection = ({
             className="w-full h-full min-w-max rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
             src={CDN_PATH + movie.poster_path}
             style={{
-<<<<<<< HEAD
               minWidth:"200px"
-=======
-              minWidth:"300px"
->>>>>>> 451542e1ac628a99ffa96b671d6d0604491ab26b
             }}
           ></img>
         </div>
