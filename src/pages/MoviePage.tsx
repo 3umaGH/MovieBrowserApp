@@ -21,22 +21,16 @@ export const MoviePage = () => {
 
   return (
     <div className="bg-zinc-900">
-<<<<<<< HEAD
       <div className="relative flex w-screen justify-center p-10 md:p-32 bg-zinc-900">
-=======
-      <div className="relative flex w-screen justify-center p-14 md:p-32">
->>>>>>> 451542e1ac628a99ffa96b671d6d0604491ab26b
         <Link to="/">
-        <IoArrowBack
-          color="white"
-          size={45}
-          className=" absolute mt-4 top-0 -left-2 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer"
-        />
+          <IoArrowBack
+            color="white"
+            size={45}
+            className=" absolute mt-4 top-0 -left-2 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer"
+          />
         </Link>
-        {movie && (
-        <MovieDetailsSection movieData={movie} />)}
+        {movie && <MovieDetailsSection movieData={movie} />}
       </div>
-      </div>
-    
+    </div>
   );
 };
