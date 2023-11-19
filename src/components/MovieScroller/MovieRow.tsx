@@ -28,6 +28,7 @@ export const MovieRow = ({
         {...events}
         ref={ref}
         className="flex gap-4 m-2 mt-8 overflow-x-scroll no-scrollbar"
+        style={{cursor:"default"}}
       >
         {movies && movies.length > 0 && (
           movies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)
