@@ -16,7 +16,7 @@ export const MovieRow = ({
   const { events } = useDraggable(ref);
   return (
     <>
-      <div className="mt-8" >
+      <div className="mt-8">
         <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
         <h2 className="text-center font-sans text-5xl text-stone-200">
@@ -28,7 +28,7 @@ export const MovieRow = ({
         {...events}
         ref={ref}
         className="flex gap-4 m-2 mt-8 overflow-x-scroll no-scrollbar"
-        style={{cursor:"default"}}
+        style={{cursor:"default", minHeight:"740px"}}
       >
         {movies && movies.length > 0 && (
           movies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)

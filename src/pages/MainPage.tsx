@@ -5,32 +5,39 @@ import { fetchPopularMovies } from "../api/api";
 import { Movie } from "../constants";
 
 type PopularMoviesApiResponse = {
-        page: number;
-        results: Movie[];
-        total_pages: number;
-        total_results: number;
-}
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+};
 
 export const MainPage = () => {
-    const [popularMovies, setPopularMovies] = useState<Movie[]>();
+  const [popularMovies, setPopularMovies] = useState<Movie[]>();
 
-    useEffect(() => {
-        fetchPopularMovies().then((response) => {
-            const apiResponse = response.data as PopularMoviesApiResponse;
-            setPopularMovies(apiResponse.results);
-        })
-    },[])
+  useEffect(() => {
+    fetchPopularMovies().then((response) => {
+      const apiResponse = response.data as PopularMoviesApiResponse;
+      setPopularMovies(apiResponse.results);
+    });
+  }, []);
 
   return (
     <div className=" bg-zinc-900">
-    <div className="flex flex-auto h-screen overflow-y-scroll no-scrollbar">
-      <Sidebar />
+      <div className="flex flex-auto overflow-y-scroll h-screen no-scrollbar">
+        <Sidebar />
 
-      <div className="overflow-x-hidden">
-        <MovieRow title="Featuring Movies" movies={popularMovies || []}/>
+        <div className="overflow-x-hidden w-screen">
+          <div>
+            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          </div>
+          <div className="-mt-44">
+            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          </div>
+          <div className="-mt-44">
+            <MovieRow title="Featuring Movies" movies={popularMovies || []} />
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
-  )
-}
+  );
+};
