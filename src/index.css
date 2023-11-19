@@ -31,7 +31,6 @@
    bg-primary text-xs font-bold transition-transform duration-150 scale-0 origin-left;
 }
 
-
 .scale-animation {
   transition: transform 20s ease-in;
   animation: posterScaleAnimation 120s infinite;
