@@ -10,10 +10,17 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { FcDoughnutChart } from "react-icons/fc";
 import { SidebarIcon } from "./SidebarIcon";
 import { SidebarText } from "./SidebarText";
+import { FetchQuery } from "../../constants";
 
-export const Sidebar = () => {
+export const Sidebar = ({
+  addMovieRow,
+}: {
+  addMovieRow: (title: string, fetchQuery: FetchQuery) => void;
+}) => {
   const parameters = useSelector((state: RootState) => state.parameters);
   const [isCollapsed, setCollapsed] = useState(false);
+  const [activeGenres, setActiveGenres] = useState<number[]>([]);
+
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);
@@ -51,13 +58,23 @@ export const Sidebar = () => {
         {...events}
         ref={ref}
       >
-        <SidebarIcon icon={<FcDoughnutChart size="40" />} tooltip="" />
-
         {parameters.genres.map((genre) => (
           <SidebarText
             key={genre.name}
             text={genre.name}
             tooltip={`Search ${genre.name} movies`}
+            active={activeGenres.includes(genre.id)}
+            onClick={() => {
+              if (activeGenres.includes(genre.id)) return;
+
+              const genreQuery = {
+                sort_by: "popularity.desc",
+                with_genres: `${genre.id}`,
+              } as FetchQuery;
+
+              addMovieRow(`${genre.name}`, genreQuery);
+              setActiveGenres((prevArray) => [...prevArray, genre.id]);
+            }}
           />
         ))}
       </div>

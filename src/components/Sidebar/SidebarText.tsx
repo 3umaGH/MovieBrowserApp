@@ -3,9 +3,13 @@ import { useState } from "react";
 export const SidebarText = ({
   text,
   tooltip,
+  onClick,
+  active = false,
 }: {
   text: String;
   tooltip?: String;
+  onClick?: () => void;
+  active?: boolean;
 }) => {
   const [iconY, setIconY] = useState(0);
 
@@ -18,7 +22,11 @@ export const SidebarText = ({
 
   return (
     <>
-      <div className="sidebar-icon group" onMouseEnter={handleMouseEnter}>
+      <div
+        className={`sidebar-icon group ${active ? "active" : ""}`}
+        onMouseEnter={handleMouseEnter}
+        onClick={onClick}
+      >
         {tooltip && (
           <span
             style={{ top: iconY - 25 }}

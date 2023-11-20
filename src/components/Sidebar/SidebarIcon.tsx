@@ -3,9 +3,11 @@ import { useState } from "react";
 export const SidebarIcon = ({
   icon,
   tooltip,
+  onClick,
 }: {
   icon: React.ReactNode;
   tooltip?: String;
+  onClick?: () => void;
 }) => {
   const [iconY, setIconY] = useState(0);
 
@@ -18,7 +20,7 @@ export const SidebarIcon = ({
 
   return (
     <>
-      <div className="sidebar-icon group" onMouseEnter={handleMouseEnter}>
+      <div className="sidebar-icon group" onMouseEnter={handleMouseEnter} onClick={onClick}>
         {tooltip && (
           <span
             style={{ top: iconY - 25 }}

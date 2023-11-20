@@ -72,7 +72,7 @@ export const MainPage = () => {
     <div className=" bg-zinc-900">
       <div className="relative flex flex-auto overflow-y-scroll no-scrollbar">
         <div className="z-10">
-          <Sidebar />
+          <Sidebar addMovieRow={addMovieRow} />
         </div>
 
         <div className="relative overflow-x-hidden h-screen w-screen z-0">
