@@ -22,51 +22,41 @@ type MoviesStateProps = {
 export const MainPage = () => {
   const [moviesList, setMovies] = useState<MoviesStateProps[]>();
 
-  const addMovieRow = ({
-    title,
-    movies,
-    page,
-    total_pages,
-    fetchQuery,
-  }: {
-    title: string;
-    movies: Movie[];
-    page: number;
-    total_pages: number;
-    fetchQuery: FetchQuery;
-  }) => {
-    setMovies((prevData: MoviesStateProps[] | undefined) => [
-      ...(prevData || []),
-      {
-        title: title,
-        movies: movies,
-        page: page,
-        total_pages: total_pages,
-        fetchQuery: fetchQuery,
-      },
-    ]);
+  const addMovieRow = (title: string, fetchQuery: FetchQuery) => {
+    fetchMoviesSortBy(fetchQuery).then((response) => {
+      const apiResponse = response.data as MovieListApiResponse;
+
+      setMovies((prevData: MoviesStateProps[] | undefined) => [
+        ...(prevData || []),
+        {
+          title: title,
+          movies: apiResponse.results,
+          page: apiResponse.page,
+          total_pages: apiResponse.total_pages,
+          fetchQuery: fetchQuery,
+        },
+      ]);
+    });
   };
 
   const fetchNextPage = (row: MoviesStateProps) => {
+    if (row.page >= row.total_pages) return;
 
-    if(row.page >= row.total_pages)
-    return;
-
-    const newQuery = {...row.fetchQuery, page: ++row.page}
+    const newQuery = { ...row.fetchQuery, page: ++row.page };
     fetchMoviesSortBy(newQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
       setMovies((prevData) =>
-      prevData?.map((prevRow) =>
-        prevRow.title === row.title
-          ? {
-              ...prevRow,
-              page: ++prevRow.page,
-              movies: [...prevRow.movies, ...apiResponse.results],
-            }
-          : prevRow
-      )
-    );
+        prevData?.map((prevRow) =>
+          prevRow.title === row.title
+            ? {
+                ...prevRow,
+                page: ++prevRow.page,
+                movies: [...prevRow.movies, ...apiResponse.results],
+              }
+            : prevRow
+        )
+      );
     });
   };
 
@@ -74,29 +64,8 @@ export const MainPage = () => {
     const popularMoviesQuery = { sort_by: "popularity.desc" } as FetchQuery;
     const topRatedMoviesQuery = { sort_by: "vote_average.desc" } as FetchQuery;
 
-    fetchMoviesSortBy(popularMoviesQuery).then((response) => {
-      const apiResponse = response.data as MovieListApiResponse;
-
-      addMovieRow({
-        title: "Featuring Movies",
-        movies: apiResponse.results,
-        page: apiResponse.page,
-        total_pages: apiResponse.total_pages,
-        fetchQuery: popularMoviesQuery,
-      });
-    });
-
-    fetchMoviesSortBy(topRatedMoviesQuery).then((response) => {
-      const apiResponse = response.data as MovieListApiResponse;
-
-      addMovieRow({
-        title: "Top rated Movies",
-        movies: apiResponse.results,
-        page: apiResponse.page,
-        total_pages: apiResponse.total_pages,
-        fetchQuery: topRatedMoviesQuery,
-      });
-    });
+    addMovieRow("Popular Movies", popularMoviesQuery);
+    addMovieRow("Top Rated", topRatedMoviesQuery);
   }, []);
 
   return (
