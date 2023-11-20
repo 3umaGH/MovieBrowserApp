@@ -51,13 +51,11 @@ export const Sidebar = () => {
         {...events}
         ref={ref}
       >
-        <SidebarIcon
-          icon={<FcDoughnutChart size="40" />}
-          tooltip=""
-        />
+        <SidebarIcon icon={<FcDoughnutChart size="40" />} tooltip="" />
 
         {parameters.genres.map((genre) => (
           <SidebarText
+            key={genre.name}
             text={genre.name}
             tooltip={`Search ${genre.name} movies`}
           />
