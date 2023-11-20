@@ -1,21 +1,18 @@
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/Store";
 
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
 import { FcDoughnutChart } from "react-icons/fc";
-import { BsAndroid } from "react-icons/bs";
-import { FcVip } from "react-icons/fc";
 import { SidebarIcon } from "./SidebarIcon";
-import { FcInfo } from "react-icons/fc";
-import { FcCustomerSupport } from "react-icons/fc";
-import { FcCollaboration } from "react-icons/fc";
-import { FcPrint } from "react-icons/fc";
-import { FcUnlock } from "react-icons/fc";
+import { SidebarText } from "./SidebarText";
 
 export const Sidebar = () => {
+  const parameters = useSelector((state: RootState) => state.parameters);
   const [isCollapsed, setCollapsed] = useState(false);
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -26,9 +23,9 @@ export const Sidebar = () => {
   return (
     <div
       className={`relative flex flex-col text-center top-0 ${
-        isCollapsed ? "w-0" : "w-24"
+        isCollapsed ? "w-0" : "w-full"
       }
-       h-screen bg-primary text-white shadow-slate-800 shadow-2xl transition-all duration-500 ease-in-out`}
+       h-screen bg-primary px-2 text-white shadow-slate-800 shadow-2xl transition-all duration-500 ease-in-out`}
     >
       <div
         className="absolute flex h-screen self-end w-4 left-full top-0 shadow-inner cursor-pointer"
@@ -39,7 +36,7 @@ export const Sidebar = () => {
       <div
         className={`${
           isCollapsed ? "scale-100" : "scale-0"
-        } opacity-50 absolute top-1/2 left-2 transition-all duration-300 cursor-pointer`}
+        } opacity-50 absolute top-1/2 left-2 transition-all duration-300 cursor-pointer z-30`}
         onClick={toggleCollapsed}
       >
         <MdOutlineArrowForwardIos
@@ -56,64 +53,15 @@ export const Sidebar = () => {
       >
         <SidebarIcon
           icon={<FcDoughnutChart size="40" />}
-          tooltip="Piska popka 123"
+          tooltip=""
         />
-        <SidebarIcon icon={<FcVip size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<BsAndroid color="green" size="40" />}
-          tooltip="Piska popka 123"
-        />
-        <SidebarIcon icon={<FcInfo size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<FcCustomerSupport size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon
-          icon={<FcCollaboration size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon icon={<FcPrint size="40" />} tooltip="piska small 32" />
-        <SidebarIcon icon={<FcUnlock size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<FcDoughnutChart size="40" />}
-          tooltip="Piska popka 123"
-        />
-        <SidebarIcon icon={<FcVip size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<BsAndroid color="green" size="40" />}
-          tooltip="Piska popka 123"
-        />
-        <SidebarIcon icon={<FcInfo size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<FcCustomerSupport size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon
-          icon={<FcCollaboration size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon icon={<FcPrint size="40" />} tooltip="piska small 32" />
-        <SidebarIcon icon={<FcUnlock size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<FcDoughnutChart size="40" />}
-          tooltip="Piska popka 123"
-        />
-        <SidebarIcon icon={<FcVip size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<BsAndroid color="green" size="40" />}
-          tooltip="Piska popka 123"
-        />
-        <SidebarIcon icon={<FcInfo size="40" />} tooltip="piska small 32" />
-        <SidebarIcon
-          icon={<FcCustomerSupport size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon
-          icon={<FcCollaboration size="40" />}
-          tooltip="piska small 32"
-        />
-        <SidebarIcon icon={<FcPrint size="40" />} tooltip="piska small 32" />
-        <SidebarIcon icon={<FcUnlock size="40" />} tooltip="piska small 32" />
+
+        {parameters.genres.map((genre) => (
+          <SidebarText
+            text={genre.name}
+            tooltip={`Search ${genre.name} movies`}
+          />
+        ))}
       </div>
     </div>
   );
