@@ -7,8 +7,6 @@ import { RootState } from "../../app/Store";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
-import { FcDoughnutChart } from "react-icons/fc";
-import { SidebarIcon } from "./SidebarIcon";
 import { SidebarText } from "./SidebarText";
 import { FetchQuery } from "../../constants";
 
