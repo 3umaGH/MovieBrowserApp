@@ -17,7 +17,7 @@ export const MovieRow = ({
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);
-  const debouncedFetch = debounce(() => scrollToEndCallback(), 200);
+  const debouncedFetch = debounce(() => scrollToEndCallback(), 50);
 
   const handleScroll = (e: Event) => {
     const target = e.target as HTMLDivElement;
