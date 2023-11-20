@@ -30,34 +30,36 @@ export const MovieDetailsSection = ({
 
   return (
     movie && (
-      <div className="" style={{ width: "100%" }}>
-        <div className="grid grid-cols-1 lg:grid-cols-3 p-4">
-          <div className="col-span-1">
+      <div
+        className="overflow-auto"
+        style={{ boxShadow: "0 8px 16px rgba(0, 0, 0, 0.5)" }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+          <div className="col-span-1 ">
             <img
-              className="w-full h-full rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none"
+              className=" rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none "
               src={CDN_PATH + movie.poster_path}
-              style={{
-                minWidth: "200px",
-              }}
+              style={{ height: "100%", width: "100%" }}
             ></img>
           </div>
 
-          <div className="relative col-span-2 flex items-start lg:items-center text-white overflow-x-hidden">
+          <div className="relative col-span-2 -ml-4 flex items-start lg:items-center text-white overflow-x-hidden">
             <div
               className="absolute overflow-hidden w-full h-full rounded-b-2xl lg:rounded-r-2xl lg:rounded-b-none bg-gray-900 opacity-100 "
               style={{ boxShadow: "inset 0 0 100px rgba(0, 0, 0, 0.5)" }}
             >
-              {movie.backdrop_path && (<img
-                id="movie-background"
-                src={CDN_PATH + movie.backdrop_path}
-                className="scale-animation w-full h-full -m-16 z-0"
-                style={{
-                  filter: "blur(6px) brightness(40%)",
-                  transform: "scale(2)",
-                }}
-              ></img>)}
+              {movie.backdrop_path && (
+                <img
+                  id="movie-background"
+                  src={CDN_PATH + movie.backdrop_path}
+                  className="scale-animation w-full h-full -m-16 z-0"
+                  style={{
+                    filter: "blur(6px) brightness(40%)",
+                    transform: "scale(2)",
+                  }}
+                ></img>
+              )}
             </div>
-
             {movie.backdrop_path && ( // some movies don't have a backdrop.
               <div
                 className="absolute w-full overflow-hidden mt-2.5"
@@ -77,83 +79,83 @@ export const MovieDetailsSection = ({
               </div>
             )}
 
-            <div className="flex flex-col w-full h-full items-start justify-between py-2 px-2 z-10 text-center lg:text-left">
-              <div className="text-xl font-roboto w-full">
-
-                <div className="title mt-2">
-                <h1 className="font-roboto text-4xl">
-                  {movie.title}{" "}
-                  <span className={`text-gray-200 font-thin`}>
-                    ({releaseDate.getFullYear()})
-                  </span>
-                </h1>
-
-                {getUSACertificate() ? (
-                  <span
-                    className={`border-stone-400 border-2 rounded-md w-fit px-1 py-0.5`}
-                  >
-                    {getUSACertificate()}
-                  </span>
-                ) : (
-                  <span>•</span>
-                )}
-
-                <span className="ml-2">
-                  {movie.release_date.replaceAll("-", "/")}
-                </span>
-
-                <span className="ml-2 font-light">
-                  •{" "}
-                  {movie.genres.map((genre, index, array) => (
-                    <span key={genre.id}>
-                      {genre.name}
-                      {array.length - 1 === index ? "" : ", "}
-                    </span>
-                  ))}
-                </span>
-
-                {movie.runtime !== 0 && (
-                  <span className="ml-2 font-light">
-                    • {convertMinutesToHoursAndMinutes(movie.runtime)}
-                  </span>
-                )}
-              </div>
-              </div>
-
-              <div className="flex w-full justify-center lg:justify-start mt-0">
-                {movie.vote_average > 0 && (
-                  <div className="flex items-center">
-                    <div className="w-32 h-32 mt-5 mx-2.5">
-                      <MovieScore
-                        score={movie.vote_average}
-                        totalVotes={movie.vote_count}
-                      />
-                    </div>
-                    <div className="pt-3.5">
-                      <span className="font-roboto font-medium text-2xl">
-                        User
-                        <br />
-                        Score
+            <div className="col-span-1 z-10 p-6">
+              <div className="flex flex-col w-full h-full items-start justify-between py-2 px-2 z-10 text-center lg:text-left">
+                <div className="text-xl font-roboto w-full">
+                  <div className="title mt-2">
+                    <h1 className="font-roboto text-4xl">
+                      {movie.title}{" "}
+                      <span className={`text-gray-200 font-thin`}>
+                        ({releaseDate.getFullYear()})
                       </span>
-                    </div>
+                    </h1>
+
+                    {getUSACertificate() ? (
+                      <span
+                        className={`border-stone-400 border-2 rounded-md w-fit px-1 py-0.5`}
+                      >
+                        {getUSACertificate()}
+                      </span>
+                    ) : (
+                      <span>•</span>
+                    )}
+
+                    <span className="ml-2">
+                      {movie.release_date.replaceAll("-", "/")}
+                    </span>
+
+                    <span className="ml-2 font-light">
+                      •{" "}
+                      {movie.genres.map((genre, index, array) => (
+                        <span key={genre.id}>
+                          {genre.name}
+                          {array.length - 1 === index ? "" : ", "}
+                        </span>
+                      ))}
+                    </span>
+
+                    {movie.runtime !== 0 && (
+                      <span className="ml-2 font-light">
+                        • {convertMinutesToHoursAndMinutes(movie.runtime)}
+                      </span>
+                    )}
                   </div>
-                )}
-                
+                </div>
+
+                <div className="flex w-full justify-center lg:justify-start mt-0">
+                  {movie.vote_average > 0 && (
+                    <div className="flex items-center">
+                      <div className="w-32 h-32 mt-5 mx-2.5">
+                        <MovieScore
+                          score={movie.vote_average}
+                          totalVotes={movie.vote_count}
+                        />
+                      </div>
+                      <div className="pt-3.5">
+                        <span className="font-roboto font-medium text-2xl">
+                          User
+                          <br />
+                          Score
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <p className="mt-5 w-full text-2xl opacity-65 text-stone-300 text-center lg:text-left">
+                  <i>{movie.tagline}</i>
+                </p>
+
+                <p className="font-semibold text-2xl mt-5 ">Overview</p>
+
+                <p className="max-w-4xl break-words mt-2.5 mb-5 text-center lg:text-left">
+                  {movie.overview !== ""
+                    ? movie.overview
+                    : "No overview found in database."}
+                </p>
+
+                <DetailsActionsComponent />
               </div>
-
-              <p className="mt-5 w-full text-2xl opacity-65 text-stone-300 text-center lg:text-left">
-                <i>{movie.tagline}</i>
-              </p>
-
-              <p className="font-semibold text-2xl mt-5 ">Overview</p>
-
-              <p className="max-w-4xl break-words mt-2.5 text-center lg:text-left">
-                {movie.overview !== ""
-                  ? movie.overview
-                  : "No overview found in database."}
-              </p>
-
-              <DetailsActionsComponent />
             </div>
           </div>
         </div>

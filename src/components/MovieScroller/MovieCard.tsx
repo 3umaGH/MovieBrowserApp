@@ -13,7 +13,11 @@ import { Link } from "react-router-dom";
 
 import NOPOSTER_IMAGE from "../../assets/no_poster.jpg";
 
-export const MovieCard = ({ movie }: { movie: Movie }) => {
+export const MovieCard = ({
+  movie,
+}: {
+  movie: Movie;
+}) => {
   const parameters = useSelector((state: RootState) => state.parameters);
   const [isFavorited, setFavorited] = useState(false);
 
@@ -25,14 +29,16 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
 
   return (
     <div
-      className="rounded-b-xl group py-1 cursor-default overflow-y-clip"
+      className="rounded-b-xl group py-1 cursor-default "
       style={{ height: "100%" }}
     >
-      <Link to={`/movie/${movie.id}`}>
+      <Link to={`/${movie.id}`}>
         <div
-          className="relative rounded-2xl w-80  cursor-pointer"
+          className="relative rounded-2xl w-80 overflow-auto cursor-pointer"
           style={{
-            backgroundImage: `url(${movie.poster_path ? CDN_PATH + movie.poster_path : NOPOSTER_IMAGE})`,
+            backgroundImage: `url(${
+              movie.poster_path ? CDN_PATH + movie.poster_path : NOPOSTER_IMAGE
+            })`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",

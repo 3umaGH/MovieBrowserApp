@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "./app/Store";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MoviePage } from "./pages/MoviePage";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,8 +17,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/movie/:id" element={<MoviePage />} />
+      <Route path="/:id" element={<MainPage />} />
+      <Route path="/" element={<MainPage />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -3,6 +3,9 @@ import { MovieRow } from "../components/MovieScroller/MovieRow";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { fetchMoviesSortBy } from "../api/api";
 import { FetchQuery, Movie } from "../constants";
+import { MovieDetailsPopup } from "../components/MovieDetailsPopup/MovieDetailsPopup";
+
+import { useParams, useNavigate } from "react-router-dom";
 
 type MovieListApiResponse = {
   page: number;
@@ -21,6 +24,10 @@ type MoviesStateProps = {
 
 export const MainPage = () => {
   const [moviesList, setMovies] = useState<MoviesStateProps[]>();
+  const [detailsMovieID, setDetailsMovieID] = useState<number>();
+
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   const addMovieRow = (title: string, fetchQuery: FetchQuery) => {
     fetchMoviesSortBy(fetchQuery).then((response) => {
@@ -60,6 +67,11 @@ export const MainPage = () => {
     });
   };
 
+  const handleMovieDetailsClose = () => {
+    setDetailsMovieID(undefined)
+    navigate("/");
+  }
+
   useEffect(() => {
     const popularMoviesQuery = { sort_by: "popularity.desc" } as FetchQuery;
     const topRatedMoviesQuery = { sort_by: "vote_average.desc" } as FetchQuery;
@@ -68,12 +80,22 @@ export const MainPage = () => {
     addMovieRow("Top Rated", topRatedMoviesQuery);
   }, []);
 
+  useEffect(() => {
+    if(id) setDetailsMovieID(parseFloat(id));
+  },[id])
+
   return (
+
+    
+
     <div className=" bg-zinc-900">
+      {detailsMovieID && <MovieDetailsPopup movieID={detailsMovieID} onClose={() => handleMovieDetailsClose()}/>}
       <div className="relative flex flex-auto overflow-y-scroll no-scrollbar">
         <div className="z-10">
           <Sidebar addMovieRow={addMovieRow} />
         </div>
+
+  
 
         <div className="relative overflow-x-hidden h-screen w-screen z-0">
           {moviesList &&
@@ -86,7 +108,7 @@ export const MainPage = () => {
               />
             ))}
         </div>
-      </div>
+            </div>
     </div>
   );
 };

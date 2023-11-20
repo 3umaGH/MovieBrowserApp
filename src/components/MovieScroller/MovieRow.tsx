@@ -54,15 +54,13 @@ export const MovieRow = ({
         id={`row_${title}`}
         style={{ cursor: "default", height: "500px" }}
       >
-
         {movies &&
           movies.length > 0 &&
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)}
 
-        <MovieSkeleton/>
-        <MovieSkeleton/>
-        <MovieSkeleton/>
-
+        <MovieSkeleton />
+        <MovieSkeleton />
+        <MovieSkeleton />
       </div>
     </>
   );
