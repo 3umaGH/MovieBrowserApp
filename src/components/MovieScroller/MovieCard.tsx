@@ -13,11 +13,7 @@ import { Link } from "react-router-dom";
 
 import NOPOSTER_IMAGE from "../../assets/no_poster.jpg";
 
-export const MovieCard = ({
-  movie,
-}: {
-  movie: Movie;
-}) => {
+export const MovieCard = ({ movie }: { movie: Movie }) => {
   const parameters = useSelector((state: RootState) => state.parameters);
   const [isFavorited, setFavorited] = useState(false);
 
@@ -29,7 +25,7 @@ export const MovieCard = ({
 
   return (
     <div
-      className="rounded-b-xl group py-1 cursor-default "
+      className="rounded-b-xl group py-1 cursor-default overflow-y-clip"
       style={{ height: "100%" }}
     >
       <Link to={`/${movie.id}`}>
