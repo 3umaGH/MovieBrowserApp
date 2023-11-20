@@ -3,7 +3,7 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 
-export const MovieScore = ({ score }: { score: number }) => {
+export const MovieScore = ({ score, totalVotes }: { score: number, totalVotes: number }) => {
   return (
     <div
       className="w-full h-full rounded-full p-1"
@@ -30,7 +30,7 @@ export const MovieScore = ({ score }: { score: number }) => {
         })}
       >
         <span
-          className="font-roboto font-semibold text-center mt-1 cursor-default"
+          className="font-roboto font-semibold text-center  cursor-default"
           style={{ fontSize: 29 }}
         >
           {((score / 10) * 100).toFixed(0)}
@@ -41,6 +41,7 @@ export const MovieScore = ({ score }: { score: number }) => {
             %
           </span>
         </span>
+        <span className=" text-xs -mt-2">{totalVotes} Rts</span>
       </CircularProgressbarWithChildren>
     </div>
   );

@@ -20,7 +20,7 @@ export const MoviePage = () => {
   }, []);
 
   return (
-      <div className="overflow-hidden mx-auto p-3" style={{ maxWidth: "1400px"}}>
+      <div className="overflow-hidden mx-auto p-3" style={{ maxWidth: "1600px"}}>
         <div className="p-8">
           <Link to="/">
             <IoArrowBack
