@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
+import { debounce } from "../../utils";
 
 export const MovieRow = ({
   title,
@@ -16,15 +17,14 @@ export const MovieRow = ({
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);
+  const debouncedFetch = debounce(() => scrollToEndCallback(), 200);
 
   const handleScroll = (e: Event) => {
     const target = e.target as HTMLDivElement;
     const scrollPercentage =
       (target.scrollLeft / (target.scrollWidth - target.clientWidth)) * 100;
 
-    if (scrollPercentage === 100)
-      scrollToEndCallback();
-    
+    if (scrollPercentage >= 75) debouncedFetch();
   };
 
   useEffect(() => {
