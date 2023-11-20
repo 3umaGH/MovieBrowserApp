@@ -31,8 +31,11 @@ export const MovieRow = ({
     const scrollContainer = document.getElementById(`row_${title}`);
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", handleScroll);
+      scrollContainer.addEventListener("touchmove", handleScroll);
+
       return () => {
         scrollContainer.removeEventListener("scroll", handleScroll);
+        scrollContainer.removeEventListener("touchmove", handleScroll);
       };
     }
   }, []);
