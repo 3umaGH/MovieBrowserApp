@@ -4,6 +4,7 @@ import { useDraggable } from "react-use-draggable-scroll";
 import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
 import { debounce } from "../../utils";
+import { MovieSkeleton } from "./MovieSkeleton";
 
 export const MovieRow = ({
   title,
@@ -24,7 +25,7 @@ export const MovieRow = ({
     const scrollPercentage =
       (target.scrollLeft / (target.scrollWidth - target.clientWidth)) * 100;
 
-    if (scrollPercentage >= 75) debouncedFetch();
+    if (scrollPercentage >= 80) debouncedFetch();
   };
 
   useEffect(() => {
@@ -53,9 +54,15 @@ export const MovieRow = ({
         id={`row_${title}`}
         style={{ cursor: "default", height: "500px" }}
       >
+
         {movies &&
           movies.length > 0 &&
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+
+        <MovieSkeleton/>
+        <MovieSkeleton/>
+        <MovieSkeleton/>
+
       </div>
     </>
   );
