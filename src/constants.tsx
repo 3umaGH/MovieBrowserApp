@@ -74,3 +74,9 @@ export type CountryRelease = {
   iso_3166_1: string;
   release_dates: ReleaseDate[];
 }
+
+export type FetchQuery = {
+  sort_by?: "popularity.desc" | "vote_average.desc";
+  with_genres?: string;
+  page?: number;
+}
