@@ -5,7 +5,7 @@ export const SidebarIcon = ({
   tooltip,
 }: {
   icon: React.ReactNode;
-  tooltip: String;
+  tooltip?: String;
 }) => {
   const [iconY, setIconY] = useState(0);
 
@@ -19,12 +19,14 @@ export const SidebarIcon = ({
   return (
     <>
       <div className="sidebar-icon group" onMouseEnter={handleMouseEnter}>
-        <span
-          style={{ top: iconY - 25 }}
-          className="sidebar-tooltip group-hover:scale-100"
-        >
-          {tooltip + " 💡"}
-        </span>
+        {tooltip && (
+          <span
+            style={{ top: iconY - 25 }}
+            className="sidebar-tooltip group-hover:scale-100"
+          >
+            {tooltip + " 💡"}
+          </span>
+        )}
         {icon}
       </div>
     </>
