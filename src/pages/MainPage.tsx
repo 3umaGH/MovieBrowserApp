@@ -48,24 +48,25 @@ export const MainPage = () => {
   };
 
   const fetchNextPage = (row: MoviesStateProps) => {
-    if (!(row.page >= row.total_pages)) return;
 
-    const newQuery = { ...row.fetchQuery, page: ++row.page };
+    if(row.page >= row.total_pages)
+    return;
 
+    const newQuery = {...row.fetchQuery, page: ++row.page}
     fetchMoviesSortBy(newQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
       setMovies((prevData) =>
-        prevData?.map((prevRow) =>
-          prevRow.title === row.title
-            ? {
-                ...prevRow,
-                page: ++prevRow.page,
-                movies: [...prevRow.movies, ...apiResponse.results],
-              }
-            : prevRow
-        )
-      );
+      prevData?.map((prevRow) =>
+        prevRow.title === row.title
+          ? {
+              ...prevRow,
+              page: ++prevRow.page,
+              movies: [...prevRow.movies, ...apiResponse.results],
+            }
+          : prevRow
+      )
+    );
     });
   };
 
