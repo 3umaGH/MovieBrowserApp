@@ -29,10 +29,12 @@ export const MainPage = () => {
 
   return (
     <div className=" bg-zinc-900">
-      <div className="flex flex-auto overflow-y-scroll no-scrollbar">
-        <Sidebar />
+      <div className="relative flex flex-auto overflow-y-scroll no-scrollbar">
+        <div className="z-10">
+      <Sidebar />
+      </div>
 
-        <div className="overflow-x-hidden w-screen">
+        <div className="relative overflow-x-hidden h-screen w-screen z-0">
           <MovieRow title="💯 Featuring Movies 💯" movies={popularMovies || []} />
 
           <MovieRow title="🏆 Top rated Movies 🏆" movies={topRatedMovies || []} />
