@@ -19,6 +19,8 @@ export const MovieDetailsPopup = ({
   useEffect(() => {
     fetchMovieDetails(`${movieID}`).then((response) => {
       setMovieData(response.data as MovieDetails);
+    }).catch(() => {
+      onClose(); // Invoke the onClose callback if there was an error fetching movie data.
     });
   }, []);
 
