@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MovieRow } from "../components/MovieScroller/MovieRow";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { fetchMoviesSortBy } from "../api/api";
@@ -28,6 +28,8 @@ export const MainPage = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const div = useRef<HTMLDivElement>(null);
 
   const addMovieRow = (title: string, fetchQuery: FetchQuery) => {
     fetchMoviesSortBy(fetchQuery).then((response) => {
@@ -81,6 +83,12 @@ export const MainPage = () => {
   }, []);
 
   useEffect(() => {
+    // Scrolls to the bottom of the page if new movie rows are added. (Ignores the first default ones)
+    if (div.current && (moviesList?.length ?? 0) > 2)
+      div.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [moviesList]);
+
+  useEffect(() => {
     if (id) setDetailsMovieID(parseFloat(id));
   }, [id]);
 
@@ -100,12 +108,14 @@ export const MainPage = () => {
         <div className="relative overflow-x-hidden h-screen w-screen z-0">
           {moviesList &&
             moviesList.map((row) => (
-              <MovieRow
-                key={row.title}
-                title={row.title}
-                movies={row.movies || []}
-                scrollToEndCallback={() => fetchNextPage(row)}
-              />
+              <div key={row.title} ref={div}>
+                <MovieRow
+                  key={row.title}
+                  title={row.title}
+                  movies={row.movies || []}
+                  scrollToEndCallback={() => fetchNextPage(row)}
+                />
+              </div>
             ))}
         </div>
       </div>
