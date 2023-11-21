@@ -4,15 +4,21 @@ import { CDN_PATH, MovieDetails } from "../../constants";
 import "react-circular-progressbar/dist/styles.css";
 import { MovieScore } from "../MovieScore";
 import { DetailsActionsComponent } from "./DetailsActionsComponent";
+import { IoMdPlay } from "react-icons/io";
 
 export const MovieDetailsSection = ({
   movieData,
+  setTrailerCallback,
 }: {
   movieData: MovieDetails;
+  setTrailerCallback: (id: string) => void;
 }) => {
   const [movie] = useState<MovieDetails>(movieData);
 
   const releaseDate = new Date(movie?.release_date || "01/01/1900");
+  const trailerVideos = movie.videos.results.filter(
+    (result) => result.type === "Trailer" && result.site === "YouTube"
+  );
 
   const getUSACertificate = () => {
     const dates = movie?.release_dates.results.find(
@@ -22,11 +28,16 @@ export const MovieDetailsSection = ({
     return (dates && dates[0].certification) || "";
   };
 
-  function convertMinutesToHoursAndMinutes(minutes: number) {
+  const convertMinutesToHoursAndMinutes = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
     return `${hours}h ${remainingMinutes}min`;
-  }
+  };
+
+  const handleViewTrailerClick = () => {
+    // Currently gets first video out of a list
+    setTrailerCallback(trailerVideos[0].key);
+  };
 
   return (
     movie && (
@@ -142,7 +153,10 @@ export const MovieDetailsSection = ({
                   )}
                 </div>
 
-                <p className="mt-5 w-full text-2xl opacity-65 text-stone-300 text-center lg:text-left">
+                <p
+                  onClick={() => handleViewTrailerClick()}
+                  className="mt-5 w-full text-2xl opacity-65 text-stone-300 text-center lg:text-left"
+                >
                   <i>{movie.tagline}</i>
                 </p>
 
@@ -155,6 +169,18 @@ export const MovieDetailsSection = ({
                 </p>
 
                 <DetailsActionsComponent />
+
+                {trailerVideos.length > 0 && (
+                  <button
+                    className="py-2 px-4 mt-2 bg-sky-800 text-sky-200 rounded-lg flex items-center justify-center 
+                  cursor-pointer hover:bg-sky-600 focus:ring-2 ring-sky-800 active:scale-75 transition-transform; text-xl mx-auto"
+                    style={{ width: "120px" }}
+                    onClick={handleViewTrailerClick}
+                  >
+                    <IoMdPlay className="mr-1" size={26} />
+                    Trailer
+                  </button>
+                )}
               </div>
             </div>
           </div>

@@ -33,9 +33,8 @@ export type MovieDetails = CommonMovieProperties & {
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
-  release_dates: {
-    results: CountryRelease[];
-};
+  release_dates: { results: CountryRelease[] };
+  videos: { results: Video[] };
 };
 
 export type Genre = {
@@ -68,15 +67,28 @@ export type ReleaseDate = {
   note: string;
   release_date: string;
   type: number;
-}
+};
 
 export type CountryRelease = {
   iso_3166_1: string;
   release_dates: ReleaseDate[];
-}
+};
+
+export type Video = {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+};
 
 export type FetchQuery = {
   sort_by?: "popularity.desc" | "vote_average.desc";
   with_genres?: string;
   page?: number;
-}
+};
