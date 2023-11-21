@@ -56,7 +56,7 @@ export const MovieDetailsPopup = ({
           className="absolute inset-0 flex items-center justify-center z-20"
           onClick={onClose}
         >
-          <Spinner size={48} />
+          <Spinner size={10} />
         </div>
       )}
     </>
