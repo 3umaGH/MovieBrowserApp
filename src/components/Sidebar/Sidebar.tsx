@@ -1,9 +1,8 @@
-import { useRef } from "react";
-import { useDraggable } from "react-use-draggable-scroll";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/Store";
 
+import { useDraggable } from "react-use-draggable-scroll";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons

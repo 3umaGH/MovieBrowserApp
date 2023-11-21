@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { Movie } from "../../constants";
 import { MovieCard } from "./MovieCard";
-import { debounce } from "../../utils";
 import { MovieSkeleton } from "./MovieSkeleton";
+import { debounce } from "../../utils";
 
 export const MovieRow = ({
   title,

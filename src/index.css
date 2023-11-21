@@ -17,17 +17,19 @@
   }
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  background-color: rgb(24,24,27);
+  background-color: rgb(24, 24, 27);
 }
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -41,7 +43,7 @@ html, body {
 }
 
 .sidebar-icon.active {
-  @apply bg-slate-800
+  @apply bg-slate-800;
 }
 
 .sidebar-tooltip {
@@ -87,4 +89,3 @@ html, body {
   @apply w-24 h-16 bg-slate-800 rounded-full flex items-center justify-center 
   cursor-pointer hover:bg-slate-700 focus:ring-2 ring-slate-600 active:scale-75 transition-transform;
 }
-

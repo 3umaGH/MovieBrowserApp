@@ -68,9 +68,9 @@ export const MainPage = () => {
   };
 
   const handleMovieDetailsClose = () => {
-    setDetailsMovieID(undefined)
+    setDetailsMovieID(undefined);
     navigate("/");
-  }
+  };
 
   useEffect(() => {
     const popularMoviesQuery = { sort_by: "popularity.desc" } as FetchQuery;
@@ -81,21 +81,21 @@ export const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    if(id) setDetailsMovieID(parseFloat(id));
-  },[id])
+    if (id) setDetailsMovieID(parseFloat(id));
+  }, [id]);
 
   return (
-
-    
-
     <div className=" bg-zinc-900">
-      {detailsMovieID && <MovieDetailsPopup movieID={detailsMovieID} onClose={() => handleMovieDetailsClose()}/>}
+      {detailsMovieID && (
+        <MovieDetailsPopup
+          movieID={detailsMovieID}
+          onClose={() => handleMovieDetailsClose()}
+        />
+      )}
       <div className="relative flex flex-auto overflow-y-scroll no-scrollbar">
         <div className="z-10">
           <Sidebar addMovieRow={addMovieRow} />
         </div>
-
-  
 
         <div className="relative overflow-x-hidden h-screen w-screen z-0">
           {moviesList &&
@@ -108,7 +108,7 @@ export const MainPage = () => {
               />
             ))}
         </div>
-            </div>
+      </div>
     </div>
   );
 };

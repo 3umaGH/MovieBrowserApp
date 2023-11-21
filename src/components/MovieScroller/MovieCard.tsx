@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { useState } from "react";
-import { MdOutlineStarPurple500 } from "react-icons/md";
-import { IoMdPlay } from "react-icons/io";
-
-import { IoMdShare } from "react-icons/io";
-import { MdFavorite } from "react-icons/md";
-import { MdFavoriteBorder } from "react-icons/md";
 import { CDN_PATH, Movie } from "../../constants";
 import { RootState } from "../../app/Store";
 import { Link } from "react-router-dom";
 
 import NOPOSTER_IMAGE from "../../assets/no_poster.jpg";
+
+import { IoMdShare } from "react-icons/io";
+import { MdOutlineStarPurple500 } from "react-icons/md";
+import { IoMdPlay } from "react-icons/io";
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md";
 
 export const MovieCard = ({ movie }: { movie: Movie }) => {
   const parameters = useSelector((state: RootState) => state.parameters);

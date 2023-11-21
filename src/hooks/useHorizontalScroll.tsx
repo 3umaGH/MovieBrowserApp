@@ -11,7 +11,7 @@ export function useHorizontalScroll() {
         e.preventDefault();
         el.scrollTo({
           left: el.scrollLeft + e.deltaY,
-          behavior: "instant"
+          behavior: "instant",
         });
       };
 

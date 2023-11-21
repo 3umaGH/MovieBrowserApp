@@ -20,7 +20,11 @@ export const SidebarIcon = ({
 
   return (
     <>
-      <div className="sidebar-icon group" onMouseEnter={handleMouseEnter} onClick={onClick}>
+      <div
+        className="sidebar-icon group"
+        onMouseEnter={handleMouseEnter}
+        onClick={onClick}
+      >
         {tooltip && (
           <span
             style={{ top: iconY - 25 }}

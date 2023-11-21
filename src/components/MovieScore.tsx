@@ -3,7 +3,13 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 
-export const MovieScore = ({ score, totalVotes }: { score: number, totalVotes: number }) => {
+export const MovieScore = ({
+  score,
+  totalVotes,
+}: {
+  score: number;
+  totalVotes: number;
+}) => {
   return (
     <div
       className="w-full h-full rounded-full p-1"

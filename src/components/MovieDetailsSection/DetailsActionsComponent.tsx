@@ -11,10 +11,7 @@ export const DetailsActionsComponent = () => {
         <button className="details-action-button">
           <MdFavorite size={26} />
         </button>
-
-  
       </div>
-   
     </>
   );
 };

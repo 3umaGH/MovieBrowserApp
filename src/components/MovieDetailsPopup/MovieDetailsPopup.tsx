@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../../api/api";
 import { MovieDetails } from "../../constants";
 
-import "react-circular-progressbar/dist/styles.css";
 import { MovieDetailsSection } from "../MovieDetailsSection/MovieDetailsSection";
-
 import { IoMdClose } from "react-icons/io";
 import { Spinner } from "../Spinner";
 
@@ -44,7 +42,6 @@ export const MovieDetailsPopup = ({
   return (
     <>
       <Backdrop />
-
       {movie ? (
         <div
           className="absolute top-1/2 left-1/2 overflow-auto w-screen h-screen lg:h-auto my-auto z-20"

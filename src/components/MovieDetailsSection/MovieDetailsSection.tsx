@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { CDN_PATH, MovieDetails } from "../../constants";
 
-import "react-circular-progressbar/dist/styles.css";
-import { MovieScore } from "../MovieScore";
 import { DetailsActionsComponent } from "./DetailsActionsComponent";
 import { IoMdPlay } from "react-icons/io";
+
+import { MovieScore } from "../MovieScore";
+import "react-circular-progressbar/dist/styles.css";
 
 export const MovieDetailsSection = ({
   movieData,
