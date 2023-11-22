@@ -106,7 +106,7 @@ export const MainPage = () => {
           <Sidebar addMovieRow={addMovieRow} />
         </div>
 
-        <div className="relative overflow-x-hidden h-screen w-screen z-0">
+        <div className="relative overflow-x-hidden h-screen w-screen z-0 no-scrollbar">
           {moviesList &&
             moviesList.map((row) => (
               <div key={row.title} ref={div}>
