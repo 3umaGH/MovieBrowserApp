@@ -46,7 +46,7 @@ export const MainPage = () => {
         },
       ]);
 
-      scrollToLastMovieRow();
+      setTimeout(() =>scrollToLastMovieRow(),300);
     });
   };
 
@@ -85,7 +85,7 @@ export const MainPage = () => {
   }, []);
 
   const scrollToLastMovieRow = () => {
-    if (div.current && (moviesList?.length ?? 0) > 2)
+    if (div.current && (moviesList?.length ?? 0) >= 2)
       div.current.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
