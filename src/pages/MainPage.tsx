@@ -46,7 +46,7 @@ export const MainPage = () => {
         },
       ]);
 
-      setTimeout(() =>scrollToLastMovieRow(),300);
+      setTimeout(() => scrollToLastMovieRow(), 300);
     });
   };
 

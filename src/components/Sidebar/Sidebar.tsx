@@ -51,7 +51,9 @@ export const Sidebar = ({
       </div>
 
       <div
-        className=" flex flex-col text-center items-center my-2 overflow-y-auto no-scrollbar"
+        className={`flex flex-col text-center items-center my-2 overflow-y-auto ${
+          isCollapsed ? "px-0" : "px-4"
+        } no-scrollbar transition-all duration-500 ease-in-out`}
         {...events}
         ref={ref}
       >

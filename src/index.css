@@ -36,7 +36,7 @@ body {
 .sidebar-icon {
   @apply flex justify-center w-full items-center my-1 p-3 mt-1.5 bg-gray-900 rounded-3xl
   hover:rounded-2xl hover:bg-cyan-700 transition-all duration-300 ease-linear cursor-pointer
-  shadow-2xl font-mono font-light active:scale-95;
+  shadow-2xl font-mono font-light;
 
   min-width: 70px;
   min-height: 70px;
