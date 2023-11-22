@@ -45,6 +45,8 @@ export const MainPage = () => {
           fetchQuery: fetchQuery,
         },
       ]);
+
+      scrollToLastMovieRow();
     });
   };
 
@@ -82,11 +84,10 @@ export const MainPage = () => {
     addMovieRow("Top Rated", topRatedMoviesQuery);
   }, []);
 
-  useEffect(() => {
-    // Scrolls to the bottom of the page if new movie rows are added. (Ignores the first default ones)
+  const scrollToLastMovieRow = () => {
     if (div.current && (moviesList?.length ?? 0) > 2)
       div.current.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [moviesList]);
+  };
 
   useEffect(() => {
     if (id) setDetailsMovieID(parseFloat(id));
