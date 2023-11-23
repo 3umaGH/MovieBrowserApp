@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/Store";
+import { RootState } from "../../../app/Store";
 
 import { useDraggable } from "react-use-draggable-scroll";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
 import { SidebarText } from "./SidebarText";
-import { FetchQuery } from "../../constants";
+import { FetchQuery } from "../../../constants";
 
 export const Sidebar = ({
   addMovieRow,

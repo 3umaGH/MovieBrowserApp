@@ -1,7 +1,7 @@
 import { MdFavorite } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-export const DetailsActionsComponent = () => {
+export const Actions = () => {
   return (
     <>
       <div className="flex items-center justify-between flex-wrap mb-1 mx-auto gap-8 text-white">

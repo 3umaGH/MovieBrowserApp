@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { CDN_PATH, MovieDetails } from "../../constants";
+import { CDN_PATH, MovieDetailsType } from "../../../constants";
 
-import { DetailsActionsComponent } from "./DetailsActionsComponent";
+import { Actions } from "./Actions";
 import { IoMdPlay } from "react-icons/io";
 
-import { MovieScore } from "../MovieScore";
+import { MovieScore } from "../../common/components/MovieScore";
 import "react-circular-progressbar/dist/styles.css";
 
-export const MovieDetailsSection = ({
+export const MovieDetails = ({
   movieData,
   setTrailerCallback,
 }: {
-  movieData: MovieDetails;
+  movieData: MovieDetailsType;
   setTrailerCallback: (id: string) => void;
 }) => {
-  const [movie] = useState<MovieDetails>(movieData);
+  const [movie] = useState<MovieDetailsType>(movieData);
 
   const releaseDate = new Date(movie?.release_date || "01/01/1900");
   const trailerVideos = movie.videos.results.filter(
@@ -169,7 +169,7 @@ export const MovieDetailsSection = ({
                     : "No overview found in database."}
                 </p>
 
-                <DetailsActionsComponent />
+                <Actions />
 
                 {trailerVideos.length > 0 && (
                   <button

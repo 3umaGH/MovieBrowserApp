@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import { fetchMovieDetails } from "../../api/api";
-import { MovieDetails } from "../../constants";
+import { fetchMovieDetails } from "../../../api/api";
+import { MovieDetailsType } from "../../../constants";
 
-import { MovieDetailsSection } from "../MovieDetailsSection/MovieDetailsSection";
 import { IoMdClose } from "react-icons/io";
-import { Spinner } from "../Spinner";
+import { Spinner } from "../../common/components/Spinner";
+import { MovieDetails } from "./MovieDetails";
 
-export const MovieDetailsPopup = ({
+export const Modal = ({
   movieID,
   onClose,
 }: {
   movieID: number;
   onClose: () => void;
 }) => {
-  const [movie, setMovieData] = useState<MovieDetails>();
+  const [movie, setMovieData] = useState<MovieDetailsType>();
   const [activeTrailerID, setActiveTrailerID] = useState<string>();
 
   useEffect(() => {
     fetchMovieDetails(`${movieID}`).then((response) => {
-      setMovieData(response.data as MovieDetails);
+      setMovieData(response.data as MovieDetailsType);
     }).catch(() => {
       onClose(); // Invoke the onClose callback if there was an error fetching movie data.
     });
@@ -76,8 +76,8 @@ export const MovieDetailsPopup = ({
                 ></iframe>
               </div>
             ) : (
-              <MovieDetailsSection
-                movieData={movie as MovieDetails}
+              <MovieDetails
+                movieData={movie as MovieDetailsType}
                 setTrailerCallback={handleSetTrailerCallback}
               />
             )}

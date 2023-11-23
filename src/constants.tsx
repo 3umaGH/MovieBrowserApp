@@ -20,7 +20,7 @@ export type Movie = CommonMovieProperties & {
   genre_ids: number[];
 };
 
-export type MovieDetails = CommonMovieProperties & {
+export type MovieDetailsType = CommonMovieProperties & {
   belongs_to_collection: any; // Replace 'any' with the actual type if available
   budget: number;
   genres: Genre[];

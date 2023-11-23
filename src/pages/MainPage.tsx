@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { MovieRow } from "../components/MovieScroller/MovieRow";
-import { Sidebar } from "../components/Sidebar/Sidebar";
+import { MovieRow } from "../modules/MovieRow/components/MovieRow";
+import { Sidebar } from "../modules/Sidebar/components/Sidebar";
 import { fetchMoviesSortBy } from "../api/api";
 import { FetchQuery, Movie } from "../constants";
-import { MovieDetailsPopup } from "../components/MovieDetailsPopup/MovieDetailsPopup";
+import { Modal } from "../modules/MovieDetailsPopup/components/Modal";
 
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -96,7 +96,7 @@ export const MainPage = () => {
   return (
     <div className=" bg-zinc-900">
       {detailsMovieID && (
-        <MovieDetailsPopup
+        <Modal
           movieID={detailsMovieID}
           onClose={() => handleMovieDetailsClose()}
         />
