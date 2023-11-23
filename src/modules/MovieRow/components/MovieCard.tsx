@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { CDN_PATH, Movie } from "../../../constants";
+import { CDN_PATH, Movie } from "../../common/constants";
 import { RootState } from "../../../app/Store";
 import { Link } from "react-router-dom";
 

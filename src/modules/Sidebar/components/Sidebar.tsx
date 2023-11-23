@@ -7,7 +7,7 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
 import { SidebarText } from "./SidebarText";
-import { FetchQuery } from "../../../constants";
+import { FetchQuery } from "../../common/constants";
 
 export const Sidebar = ({
   addMovieRow,

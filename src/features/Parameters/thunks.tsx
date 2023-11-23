@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchGenres } from "../../api/api";
+import { fetchGenres } from "../../modules/common/api/api";
 
 export const fetchGenresThunk = createAsyncThunk(
   "parameters/fetchGenres",

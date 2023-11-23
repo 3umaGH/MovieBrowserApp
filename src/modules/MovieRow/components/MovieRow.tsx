@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
-import { Movie } from "../../../constants";
+import { Movie } from "../../common/constants";
 import { MovieCard } from "./MovieCard";
 import { MovieSkeleton } from "./MovieSkeleton";
 import { debounce } from "../../../utils";

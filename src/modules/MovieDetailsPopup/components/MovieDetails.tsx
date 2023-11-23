@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CDN_PATH, MovieDetailsType } from "../../../constants";
+import { CDN_PATH, MovieDetailsType } from "../../common/constants";
 
 import { Actions } from "./Actions";
 import { IoMdPlay } from "react-icons/io";

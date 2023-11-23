@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchMovieDetails } from "../../../api/api";
-import { MovieDetailsType } from "../../../constants";
+import { fetchMovieDetails } from "../../common/api/api";
+import { MovieDetailsType } from "../../common/constants";
 
 import { IoMdClose } from "react-icons/io";
 import { Spinner } from "../../common/components/Spinner";

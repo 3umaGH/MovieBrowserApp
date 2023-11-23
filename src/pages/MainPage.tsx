@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { MovieRow } from "../modules/MovieRow/components/MovieRow";
 import { Sidebar } from "../modules/Sidebar/components/Sidebar";
-import { fetchMoviesSortBy } from "../api/api";
-import { FetchQuery, Movie } from "../constants";
+import { fetchMoviesSortBy } from "../modules/common/api/api";
+import { FetchQuery, Movie } from "../modules/common/constants";
 import { Modal } from "../modules/MovieDetailsPopup/components/Modal";
 
 import { useParams, useNavigate } from "react-router-dom";
