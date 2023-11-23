@@ -15,7 +15,7 @@ export const Sidebar = ({
   addMovieRow: (title: string, fetchQuery: FetchQuery) => void;
 }) => {
   const parameters = useSelector((state: RootState) => state.parameters);
-  const [isCollapsed, setCollapsed] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(true);
   const [activeGenres, setActiveGenres] = useState<number[]>([]);
 
   const ref =
