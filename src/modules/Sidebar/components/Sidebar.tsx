@@ -40,11 +40,12 @@ export const Sidebar = ({
       <div
         className={`${
           isCollapsed ? "scale-100" : "scale-0"
-        } opacity-50 absolute top-1/2 left-2 transition-all duration-300 cursor-pointer z-30`}
+        } opacity-80 absolute top-1/2 left-2 transition-all duration-300 cursor-pointer z-30`}
         onClick={toggleCollapsed}
       >
+
         <MdOutlineArrowForwardIos
-          className="cursor-pointer"
+          className="cursor-pointer animate-bounce-horizontal"
           color="#474747"
           size="30"
         />

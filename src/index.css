@@ -85,6 +85,22 @@ body {
   }
 }
 
+@keyframes bounceHorizontal {
+  0%,
+  100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-horizontal {
+  animation: bounceHorizontal 3s infinite;
+}
+
 .details-action-button {
   @apply w-24 h-16 bg-slate-800 rounded-full flex items-center justify-center 
   cursor-pointer hover:bg-slate-700 focus:ring-2 ring-slate-600 active:scale-75 transition-transform;
