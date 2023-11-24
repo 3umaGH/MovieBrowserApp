@@ -8,6 +8,16 @@ export const fetchGenres = async () => {
   return await axios.get(`${API_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
 };
 
+export const fetchUpcomingMovies = async ({ page }: FetchQuery) => {
+  let query = "";
+
+  if (page) query += `&page=${page}`;
+
+  return await axios.get(
+    `${API_BASE_URL}/movie/upcoming?api_key=${API_KEY}${query}`
+  );
+};
+
 export const fetchMoviesSortBy = async ({
   sort_by,
   with_genres,
@@ -15,7 +25,6 @@ export const fetchMoviesSortBy = async ({
   origin_country,
 }: FetchQuery) => {
   let query = "";
-
   if (with_genres) query += `&with_genres=${with_genres}`;
 
   if (sort_by)
@@ -27,8 +36,8 @@ export const fetchMoviesSortBy = async ({
 
   if (origin_country) query += `&with_origin_country=${origin_country}`;
 
-
-  console.log(    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=R&with_original_language=en${query}`
+  console.log(
+    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=R&with_original_language=en${query}`
   );
 
   return await axios.get(

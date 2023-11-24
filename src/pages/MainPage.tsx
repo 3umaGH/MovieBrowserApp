@@ -1,13 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { MovieRow } from "../modules/MovieRow/components/MovieRow";
 import { Sidebar } from "../modules/Sidebar/components/Sidebar";
-import { fetchMoviesSortBy } from "../modules/common/api/api";
+import {
+  fetchMoviesSortBy,
+  fetchUpcomingMovies,
+} from "../modules/common/api/api";
 import { FetchQuery, Movie } from "../modules/common/constants";
 import { Modal } from "../modules/MovieDetailsPopup/components/Modal";
 
 import { useParams, useNavigate } from "react-router-dom";
+import { AxiosPromise, AxiosResponse } from "axios";
 
-type MovieListApiResponse = {
+export type MovieListApiResponse = {
   page: number;
   results: Movie[];
   total_pages: number;
@@ -20,6 +24,9 @@ type MoviesStateProps = {
   page: number;
   total_pages: number;
   fetchQuery: FetchQuery;
+  fetchFn: (
+    fetchQuery: FetchQuery
+  ) => Promise<AxiosResponse<MovieListApiResponse, any>>;
 };
 
 export const MainPage = () => {
@@ -31,8 +38,14 @@ export const MainPage = () => {
 
   const div = useRef<HTMLDivElement>(null);
 
-  const addMovieRow = (title: string, fetchQuery: FetchQuery) => {
-    fetchMoviesSortBy(fetchQuery).then((response) => {
+  const addMovieRow = (
+    title: string,
+    fetch: (
+      fetchQuery: FetchQuery
+    ) => Promise<AxiosResponse<MovieListApiResponse, any>>,
+    fetchQuery: FetchQuery
+  ) => {
+    fetch(fetchQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
       setMovies((prevData: MoviesStateProps[] | undefined) => [
@@ -43,6 +56,7 @@ export const MainPage = () => {
           page: apiResponse.page,
           total_pages: apiResponse.total_pages,
           fetchQuery: fetchQuery,
+          fetchFn: fetch,
         },
       ]);
 
@@ -54,7 +68,7 @@ export const MainPage = () => {
     if (row.page >= row.total_pages) return;
 
     const newQuery = { ...row.fetchQuery, page: ++row.page };
-    fetchMoviesSortBy(newQuery).then((response) => {
+    row.fetchFn(newQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
       setMovies((prevData) =>
@@ -62,7 +76,7 @@ export const MainPage = () => {
           prevRow.title === row.title
             ? {
                 ...prevRow,
-                page: ++prevRow.page,
+                page: prevRow.page + 1,
                 movies: [...prevRow.movies, ...apiResponse.results],
               }
             : prevRow
@@ -77,11 +91,16 @@ export const MainPage = () => {
   };
 
   useEffect(() => {
-    const popularMoviesQuery = { sort_by: "popularity.desc" } as FetchQuery;
-    const topRatedMoviesQuery = { sort_by: "vote_average.desc" } as FetchQuery;
+    addMovieRow("Popular Movies", fetchMoviesSortBy, {
+      sort_by: "popularity.desc",
+    });
+    addMovieRow("Top Rated", fetchMoviesSortBy, {
+      sort_by: "vote_average.desc",
+    });
 
-    addMovieRow("Popular Movies", popularMoviesQuery);
-    addMovieRow("Top Rated", topRatedMoviesQuery);
+    addMovieRow("upcoming", fetchUpcomingMovies, {
+      sort_by: "vote_average.desc",
+    });
   }, []);
 
   const scrollToLastMovieRow = () => {

@@ -56,7 +56,7 @@ export const MovieRow = ({
       >
         {movies &&
           movies.length > 0 &&
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+          movies.map((movie) => <MovieCard key={`${movie.id}_${title + Math.random()}`} movie={movie} />)}
 
         <MovieSkeleton />
         <MovieSkeleton />

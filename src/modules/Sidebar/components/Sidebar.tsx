@@ -8,11 +8,22 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 // placeholder icons
 import { SidebarText } from "./SidebarText";
 import { FetchQuery } from "../../common/constants";
+import { AxiosResponse } from "axios";
+import { MovieListApiResponse } from "../../../pages/MainPage";
+import { fetchMoviesSortBy } from "../../common/api/api";
 
 export const Sidebar = ({
   addMovieRow,
 }: {
-  addMovieRow: (title: string, fetchQuery: FetchQuery) => void;
+  addMovieRow: (
+    title: string,
+
+    fetch: (
+      fetchQuery: FetchQuery
+    ) => Promise<AxiosResponse<MovieListApiResponse, any>>,
+
+    fetchQuery: FetchQuery
+  ) => void;
 }) => {
   const parameters = useSelector((state: RootState) => state.parameters);
   const [isCollapsed, setCollapsed] = useState(true);
@@ -27,7 +38,7 @@ export const Sidebar = ({
   const handleButtonClick = (name: string, query: FetchQuery) => {
     if (activeButtons.includes(name)) return;
 
-    addMovieRow(`${name}`, query);
+    addMovieRow(`${name}`, fetchMoviesSortBy, query);
     setActiveButtons((prevArray) => [...prevArray, name]);
   };
 
