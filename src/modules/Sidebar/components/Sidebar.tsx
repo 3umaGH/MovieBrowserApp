@@ -9,7 +9,7 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { SidebarText } from "./SidebarText";
 import { FetchQuery } from "../../common/constants";
 import { AxiosResponse } from "axios";
-import { MovieListApiResponse } from "../../../pages/MainPage";
+import { MovieListApiResponse } from "../../../modules/MovieBrowser/components/MovieBrowser";
 import { fetchMoviesSortBy } from "../../common/api/api";
 
 export const Sidebar = ({
