@@ -12,6 +12,7 @@ export const fetchMoviesSortBy = async ({
   sort_by,
   with_genres,
   page,
+  origin_country,
 }: FetchQuery) => {
   let query = "";
 
@@ -24,10 +25,14 @@ export const fetchMoviesSortBy = async ({
 
   if (page) query += `&page=${page}`;
 
-  console.log(query);
+  if (origin_country) query += `&with_origin_country=${origin_country}`;
+
+
+  console.log(    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=R&with_original_language=en${query}`
+  );
 
   return await axios.get(
-    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=R&with_original_language=en${query}`
+    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}${query}`
   );
 };
 
