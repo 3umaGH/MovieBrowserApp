@@ -7,6 +7,9 @@ import { IoMdPlay } from "react-icons/io";
 import { MovieScore } from "../../common/components/MovieScore";
 import "react-circular-progressbar/dist/styles.css";
 
+import NOPOSTER_IMAGE from "../../../assets/no_poster.jpg";
+
+
 export const MovieDetails = ({
   movieData,
   setTrailerCallback,
@@ -50,7 +53,7 @@ export const MovieDetails = ({
           <div className="col-span-1 ">
             <img
               className=" rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none "
-              src={CDN_PATH + movie.poster_path}
+              src={movie.poster_path ? CDN_PATH + movie.poster_path : NOPOSTER_IMAGE}
               style={{ height: "100%", width: "100%" }}
             ></img>
           </div>
