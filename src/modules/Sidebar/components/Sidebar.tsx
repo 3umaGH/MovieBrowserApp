@@ -83,6 +83,7 @@ export const Sidebar = ({
             handleButtonClick("Estonian Movies", {
               sort_by: "popularity.desc",
               origin_country: "EE",
+              page: 1,
             });
           }}
         />
@@ -95,6 +96,7 @@ export const Sidebar = ({
             handleButtonClick("Russian Movies", {
               sort_by: "popularity.desc",
               origin_country: "RU",
+              page: 1,
             });
           }}
         />
@@ -106,12 +108,11 @@ export const Sidebar = ({
             tooltip={`Search ${genre.name} movies`}
             active={activeButtons.includes(genre.name)}
             onClick={() => {
-              const genreQuery = {
+              handleButtonClick(genre.name, {
                 sort_by: "popularity.desc",
-                with_genres: `${genre.id}`,
-              } as FetchQuery;
-
-              handleButtonClick(genre.name, genreQuery);
+                with_genres: [genre.id],
+                page: 1,
+              });
             }}
           />
         ))}

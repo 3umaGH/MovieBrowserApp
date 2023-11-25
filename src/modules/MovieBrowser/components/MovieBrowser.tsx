@@ -154,7 +154,6 @@ export const MovieBrowser = ({
       )}
       <div className="relative overflow-x-hidden h-screen w-screen z-0 no-scrollbar">
         {moviesList &&
-          moviesList.length === defaultRows.length && // Checking length to display default genres in same order as they were added.
           moviesList.map((row) => (
             <div key={row.title} ref={div}>
               <MovieRow
