@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { MovieRow } from "../../../modules/MovieRow/components/MovieRow";
-import { Sidebar } from "../../../modules/Sidebar/components/Sidebar";
+import { GenreSelector } from "../../GenreSelector/components/GenreSelector";
 import { FetchQuery, Movie } from "../../../modules/common/constants";
 import { Modal } from "../../../modules/MovieDetailsPopup/components/Modal";
 
@@ -142,7 +142,7 @@ export const MovieBrowser = ({
     <>
       {genreSelector && (
         <div className="z-10">
-          <Sidebar addMovieRow={addMovieRow} />
+          <GenreSelector addMovieRow={addMovieRow} />
         </div>
       )}
 

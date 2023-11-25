@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const SidebarText = ({
+export const GenreTextButton = ({
   text,
   tooltip,
   onClick,

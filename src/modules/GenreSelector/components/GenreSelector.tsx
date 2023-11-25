@@ -6,13 +6,13 @@ import { useDraggable } from "react-use-draggable-scroll";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
-import { SidebarText } from "./SidebarText";
+import { GenreTextButton } from "./GenreTextButton";
 import { FetchQuery } from "../../common/constants";
 import { AxiosResponse } from "axios";
-import { MovieListApiResponse } from "../../../modules/MovieBrowser/components/MovieBrowser";
+import { MovieListApiResponse } from "../../MovieBrowser/components/MovieBrowser";
 import { fetchMoviesSortBy } from "../../common/api/api";
 
-export const Sidebar = ({
+export const GenreSelector = ({
   addMovieRow,
 }: {
   addMovieRow: (
@@ -75,7 +75,7 @@ export const Sidebar = ({
         {...events}
         ref={ref}
       >
-        <SidebarText
+        <GenreTextButton
           text={"Estonian Movies"}
           tooltip={`Search Estonian movies`}
           active={activeButtons.includes("Estonian Movies")}
@@ -88,7 +88,7 @@ export const Sidebar = ({
           }}
         />
 
-        <SidebarText
+        <GenreTextButton
           text={"Russian Movies"}
           tooltip={`Search Russian movies`}
           active={activeButtons.includes("Russian Movies")}
@@ -102,7 +102,7 @@ export const Sidebar = ({
         />
 
         {parameters.genres.map((genre) => (
-          <SidebarText
+          <GenreTextButton
             key={genre.name}
             text={genre.name}
             tooltip={`Search ${genre.name} movies`}
