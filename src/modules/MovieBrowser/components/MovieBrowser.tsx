@@ -163,7 +163,7 @@ export const MovieBrowser = ({
                 movies={row.movies || []}
                 movieRow={row}
                 scrollToEndCallback={() => fetchNextPage(row)}
-                handleQueryUpdate={handleQueryUpdate}
+                handleQueryUpdateCallback={handleQueryUpdate}
               />
             </div>
           ))}

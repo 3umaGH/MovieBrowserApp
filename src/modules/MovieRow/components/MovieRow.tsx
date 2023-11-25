@@ -12,13 +12,13 @@ export const MovieRow = ({
   movies,
   movieRow,
   scrollToEndCallback,
-  handleQueryUpdate,
+  handleQueryUpdateCallback,
 }: {
   title: string;
   movies: Movie[];
   movieRow: MoviesStateProps;
   scrollToEndCallback: () => void;
-  handleQueryUpdate: (row: MoviesStateProps, fetchQuery: FetchQuery) => void;
+  handleQueryUpdateCallback: (row: MoviesStateProps, fetchQuery: FetchQuery) => void;
 }) => {
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -46,14 +46,14 @@ export const MovieRow = ({
     }
   }, []);
 
-  const handleSortBy = () => {
+  const handleQueryUpdate = () => {
     const query = {
       ...movieRow.fetchQuery,
       sort_by: "vote_average.desc",
-      with_genres: "120",
+      with_genres: [120,15],
     } as FetchQuery;
 
-    handleQueryUpdate(movieRow, query);
+    handleQueryUpdateCallback(movieRow, query);
   };
 
   return (
@@ -62,7 +62,7 @@ export const MovieRow = ({
       <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
-      <button onClick={handleSortBy} className="bg-white">
+      <button onClick={handleQueryUpdate} className="bg-white">
         set thing
       </button>
       <div
