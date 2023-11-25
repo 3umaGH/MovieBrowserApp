@@ -7,7 +7,7 @@ import { IoMdPlay } from "react-icons/io";
 import { MovieScore } from "../../common/components/MovieScore";
 import "react-circular-progressbar/dist/styles.css";
 
-import NOPOSTER_IMAGE from "../../../assets/no_poster.jpg";
+import NOPOSTER_IMAGE from "../../../assets/no_poster.png";
 
 export const MovieDetails = ({
   movieData,
@@ -97,9 +97,9 @@ export const MovieDetails = ({
               </div>
             )}
 
-            <div className="col-span-1 z-10 p-6">
+            <div className="col-span-1 z-10 p-6 min-w-full">
               <div className="flex flex-col w-full h-full items-start justify-between py-2 px-2 z-10 text-center lg:text-left">
-                <div className="text-xl font-roboto w-full">
+                <div className="text-xl font-roboto">
                   <div className="title mt-2">
                     <h1 className="font-roboto text-4xl">
                       {movie.title}{" "}
@@ -169,7 +169,7 @@ export const MovieDetails = ({
 
                 <p className="font-semibold text-2xl mt-5 ">Overview</p>
 
-                <p className="max-w-4xl break-words mt-2.5 mb-5 text-center lg:text-left">
+                <p className="max-w-4xl break-words mt-2.5 mb-5 text-left">
                   {movie.overview !== ""
                     ? movie.overview
                     : "No overview found in database."}
