@@ -25,7 +25,8 @@ export const fetchMoviesSortBy = async ({
   origin_country,
 }: FetchQuery) => {
   let query = "";
-  if (with_genres && with_genres.length > 0) query += `&with_genres=${with_genres}`;
+  if (with_genres && with_genres.length > 0)
+    query += `&with_genres=${with_genres}`;
 
   if (sort_by)
     if (sort_by === "vote_average.desc&vote_count.desc")

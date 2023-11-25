@@ -26,7 +26,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <div
       className="rounded-b-xl group py-1 cursor-default overflow-y-clip"
-      style={{ height: "100%" }}
+      style={{ maxWidth: "350px", height: "100%" }}
     >
       <Link to={`/${movie.id}`}>
         <div

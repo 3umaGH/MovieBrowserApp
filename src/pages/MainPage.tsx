@@ -13,7 +13,7 @@ export const MainPage = () => {
             {
               title: "Popular Movies",
               fetchFn: fetchMoviesSortBy,
-              fetchQuery: { sort_by: "popularity.desc", page: 1},
+              fetchQuery: { sort_by: "popularity.desc", page: 1 },
             },
             {
               title: "Upcoming Movies",
@@ -23,7 +23,10 @@ export const MainPage = () => {
             {
               title: "Top Rated",
               fetchFn: fetchMoviesSortBy,
-              fetchQuery: { sort_by: "vote_average.desc&vote_count.desc", page: 1 },
+              fetchQuery: {
+                sort_by: "vote_average.desc&vote_count.desc",
+                page: 1,
+              },
             },
           ]}
         />

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FetchQuery, SORT_BY_OPTIONS } from "../../common/constants";
 import { useSelector } from "react-redux";
+import { IoMdClose } from "react-icons/io";
+
+import { FetchQuery, SORT_BY_OPTIONS } from "../../common/constants";
 import { RootState } from "../../../app/Store";
 
 export const QueryEditor = ({
@@ -22,14 +24,14 @@ export const QueryEditor = ({
 
   const parameters = useSelector((state: RootState) => state.parameters);
 
-  /*const Backdrop = () => {
+  const Backdrop = () => {
     return (
       <div
-        className="absolute w-screen h-full bg-black opacity-50 z-20"
+        className="absolute w-screen h-full bg-black opacity-0 z-20"
         onClick={onClose}
       ></div>
     );
-  };*/
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormFields((prevFields) => ({
@@ -70,17 +72,25 @@ export const QueryEditor = ({
 
   return (
     <>
-
+      <Backdrop />
       <div
         className="absolute top-1/2 left-1/2 overflow-clip h-auto my-auto z-20"
         style={{
           transform: "translate(-50%, -50%)",
         }}
       >
-        <div className="p-4 bg-white">
+        <div className="absolute top-0 -right-5 z-20 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer">
+          <IoMdClose color="black" size={30} onClick={onClose} />
+        </div>
+
+        <div
+          className="p-8"
+          style={{ backgroundColor: "rgba(240,240,240,0.9)" }}
+        >
           <label htmlFor="sort_by">Sort By: </label>
 
           <select
+            className="mb-5"
             name="sort_by"
             id="sort_by"
             value={formFields.sort_by}
@@ -93,7 +103,7 @@ export const QueryEditor = ({
             ))}
           </select>
 
-          <div className=" h-52 overflow-auto">
+          <div className=" h-72 overflow-auto">
             {parameters.genres.map((genre) => (
               <div key={genre.name}>
                 <input
