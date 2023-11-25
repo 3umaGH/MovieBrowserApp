@@ -5,7 +5,7 @@ import { CDN_PATH, Movie } from "../../common/constants";
 import { RootState } from "../../../app/Store";
 import { Link } from "react-router-dom";
 
-import NOPOSTER_IMAGE from "../../../assets/no_poster.jpg";
+import NOPOSTER_IMAGE from "../../../assets/no_poster.png";
 
 import { IoMdShare } from "react-icons/io";
 import { MdOutlineStarPurple500 } from "react-icons/md";
