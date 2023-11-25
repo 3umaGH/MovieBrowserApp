@@ -143,6 +143,7 @@ export enum COUNTRY_OPTIONS {
   "CZ" = "Czechia",
   "DK" = "Denmark",
   "DO" = "Dominican Republic",
+  "EE" = "Estonia",
   "EC" = "Ecuador",
   "EG" = "Egypt",
   "SV" = "El Salvador",
