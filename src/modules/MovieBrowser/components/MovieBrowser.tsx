@@ -7,10 +7,9 @@ import { Modal } from "../../../modules/MovieDetailsPopup/components/Modal";
 import { useParams, useNavigate } from "react-router-dom";
 import { AxiosResponse } from "axios";
 
-type MoviesStateProps = {
+export type MoviesStateProps = {
   title: string;
   movies: Movie[];
-  page: number;
   total_pages: number;
   fetchQuery: FetchQuery;
   fetchFn: (
@@ -18,17 +17,14 @@ type MoviesStateProps = {
   ) => Promise<AxiosResponse<MovieListApiResponse, any>>;
 };
 
-type MovieListApiResponse = {
+export type MovieListApiResponse = {
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
 };
 
-export const MovieBrowser = ({
-  genreSelector,
-  defaultRows,
-}: {
+type MovieBrowserProps = {
   genreSelector?: boolean;
   defaultRows: {
     title: string;
@@ -37,7 +33,12 @@ export const MovieBrowser = ({
     ) => Promise<AxiosResponse<MovieListApiResponse, any>>;
     fetchQuery: FetchQuery;
   }[];
-}) => {
+};
+
+export const MovieBrowser = ({
+  genreSelector = true,
+  defaultRows,
+}: MovieBrowserProps) => {
   const [moviesList, setMovies] = useState<MoviesStateProps[]>();
   const [detailsMovieID, setDetailsMovieID] = useState<number>();
 
@@ -61,9 +62,8 @@ export const MovieBrowser = ({
         {
           title: title,
           movies: apiResponse.results,
-          page: apiResponse.page,
           total_pages: apiResponse.total_pages,
-          fetchQuery: fetchQuery,
+          fetchQuery: { ...fetchQuery, page: apiResponse.page },
           fetchFn: fetch,
         },
       ]);
@@ -73,9 +73,10 @@ export const MovieBrowser = ({
   };
 
   const fetchNextPage = (row: MoviesStateProps) => {
-    if (row.page >= row.total_pages) return;
+    if (row.fetchQuery.page >= row.total_pages) return;
 
-    const newQuery = { ...row.fetchQuery, page: ++row.page };
+    const newQuery = { ...row.fetchQuery, page: ++row.fetchQuery.page };
+
     row.fetchFn(newQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
@@ -84,11 +85,34 @@ export const MovieBrowser = ({
           prevRow.title === row.title
             ? {
                 ...prevRow,
-                page: prevRow.page + 1,
+                fetchQuery: newQuery,
                 movies: [...prevRow.movies, ...apiResponse.results],
               }
             : prevRow
         )
+      );
+    });
+  };
+
+  const handleQueryUpdate = (
+    row: MoviesStateProps,
+    newFetchQuery: FetchQuery
+  ) => {
+    row.fetchFn(newFetchQuery).then((response) => {
+      const apiResponse = response.data as MovieListApiResponse;
+
+      setMovies(
+        (prevData) =>
+          prevData?.map((prevRow) =>
+            prevRow.title === row.title
+              ? {
+                  ...prevRow,
+                  fetchQuery: { ...newFetchQuery, page: 1 },
+                  movies: apiResponse.results,
+                  total_pages: apiResponse.total_pages,
+                }
+              : prevRow
+          ) ?? []
       );
     });
   };
@@ -99,13 +123,14 @@ export const MovieBrowser = ({
   };
 
   useEffect(() => {
-    defaultRows.forEach((row) => {
-        addMovieRow(row.title, row.fetchFn, row.fetchQuery)
-    })
+    defaultRows.forEach((row) =>
+      addMovieRow(row.title, row.fetchFn, row.fetchQuery)
+    );
   }, []);
 
   const scrollToLastMovieRow = () => {
-    if (div.current && (moviesList?.length ?? 0) >= 2)
+    if (div.current && (moviesList?.length ?? 0) >= defaultRows.length)
+      // Do not scroll default rows
       div.current.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
@@ -129,13 +154,16 @@ export const MovieBrowser = ({
       )}
       <div className="relative overflow-x-hidden h-screen w-screen z-0 no-scrollbar">
         {moviesList &&
+          moviesList.length === defaultRows.length && // Checking length to display default genres in same order as they were added.
           moviesList.map((row) => (
             <div key={row.title} ref={div}>
               <MovieRow
                 key={row.title}
                 title={row.title}
                 movies={row.movies || []}
+                movieRow={row}
                 scrollToEndCallback={() => fetchNextPage(row)}
+                handleQueryUpdate={handleQueryUpdate}
               />
             </div>
           ))}

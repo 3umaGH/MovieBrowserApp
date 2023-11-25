@@ -9,7 +9,6 @@ export const MainPage = () => {
     <div className=" bg-zinc-900">
       <div className="relative flex flex-auto">
         <MovieBrowser
-          genreSelector={true}
           defaultRows={[
             {
               title: "Popular Movies",
@@ -17,14 +16,14 @@ export const MainPage = () => {
               fetchQuery: { sort_by: "popularity.desc" },
             },
             {
-              title: "Top Rated",
-              fetchFn: fetchMoviesSortBy,
-              fetchQuery: { sort_by: "vote_average.desc" },
-            },
-            {
               title: "Upcoming Movies",
               fetchFn: fetchUpcomingMovies,
               fetchQuery: {},
+            },
+            {
+              title: "Top Rated",
+              fetchFn: fetchMoviesSortBy,
+              fetchQuery: { sort_by: "vote_average.desc" },
             },
           ]}
         />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CDN_PATH, MovieDetailsType } from "../../common/constants";
 
-import { Actions } from "./Actions";
+import { DetailsActions } from "./DetailsActions";
 import { IoMdPlay } from "react-icons/io";
 
 import { MovieScore } from "../../common/components/MovieScore";
@@ -172,7 +172,7 @@ export const MovieDetails = ({
                     : "No overview found in database."}
                 </p>
 
-                <Actions />
+                <DetailsActions />
 
                 {trailerVideos.length > 0 && (
                   <button
