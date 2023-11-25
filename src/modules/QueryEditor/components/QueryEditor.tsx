@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { IoMdClose } from "react-icons/io";
 
-import { FetchQuery, SORT_BY_OPTIONS } from "../../common/constants";
+import {
+  COUNTRY_OPTIONS,
+  FetchQuery,
+  SORT_BY_OPTIONS,
+} from "../../common/constants";
 import { RootState } from "../../../app/Store";
 
 export const QueryEditor = ({
@@ -17,9 +21,11 @@ export const QueryEditor = ({
   const [formFields, setFormFields] = useState<{
     sort_by: keyof typeof SORT_BY_OPTIONS;
     with_genres?: number[];
+    origin_country?: keyof typeof COUNTRY_OPTIONS;
   }>({
     sort_by: currentQuery.sort_by as keyof typeof SORT_BY_OPTIONS,
     with_genres: currentQuery.with_genres || [],
+    origin_country: currentQuery.origin_country || "ALL",
   });
 
   const parameters = useSelector((state: RootState) => state.parameters);
@@ -64,9 +70,12 @@ export const QueryEditor = ({
     const newQuery = {
       sort_by: formFields.sort_by,
       with_genres: formFields.with_genres,
+      ...(formFields.origin_country !== undefined && // Conditionally adding origin country if it's not undefined and is not All countries to the fetch query.
+        formFields.origin_country !== "ALL" && {
+          origin_country: formFields.origin_country,
+        }),
     } as FetchQuery;
 
-    console.log(formFields);
     newQueryCallback(newQuery);
   }, [formFields]);
 
@@ -87,21 +96,22 @@ export const QueryEditor = ({
           className="p-8"
           style={{ backgroundColor: "rgba(240,240,240,0.9)" }}
         >
-          <label htmlFor="sort_by">Sort By: </label>
+          <div className="my-5">
+            <label htmlFor="sort_by">Sort By: </label>
 
-          <select
-            className="mb-5"
-            name="sort_by"
-            id="sort_by"
-            value={formFields.sort_by}
-            onChange={handleChange}
-          >
-            {Object.entries(SORT_BY_OPTIONS).map(([option, value]) => (
-              <option key={value} value={option}>
-                {value}
-              </option>
-            ))}
-          </select>
+            <select
+              name="sort_by"
+              id="sort_by"
+              value={formFields.sort_by}
+              onChange={handleChange}
+            >
+              {Object.entries(SORT_BY_OPTIONS).map(([option, value]) => (
+                <option key={value} value={option}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
 
           <div className=" h-72 overflow-auto">
             {parameters.genres.map((genre) => (
@@ -119,6 +129,23 @@ export const QueryEditor = ({
                 <br />
               </div>
             ))}
+          </div>
+
+          <div className="my-5">
+            <label htmlFor="origin_country">Origin Country: </label>
+
+            <select
+              name="origin_country"
+              id="origin_country"
+              value={formFields.origin_country || "ALL"}
+              onChange={handleChange}
+            >
+              {Object.entries(COUNTRY_OPTIONS).map(([option, value]) => (
+                <option key={value} value={option}>
+                  {value}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
