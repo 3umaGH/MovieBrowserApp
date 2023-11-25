@@ -17,11 +17,13 @@ export const Modal = ({
   const [activeTrailerID, setActiveTrailerID] = useState<string>();
 
   useEffect(() => {
-    fetchMovieDetails(`${movieID}`).then((response) => {
-      setMovieData(response.data as MovieDetailsType);
-    }).catch(() => {
-      onClose(); // Invoke the onClose callback if there was an error fetching movie data.
-    });
+    fetchMovieDetails(`${movieID}`)
+      .then((response) => {
+        setMovieData(response.data as MovieDetailsType);
+      })
+      .catch(() => {
+        onClose(); // Invoke the onClose callback if there was an error fetching movie data.
+      });
   }, []);
 
   const handleSetTrailerCallback = (id: string) => {

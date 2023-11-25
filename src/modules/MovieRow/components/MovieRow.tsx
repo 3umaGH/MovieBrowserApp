@@ -18,7 +18,10 @@ export const MovieRow = ({
   movies: Movie[];
   rowData: MoviesStateProps;
   scrollToEndCallback: () => void;
-  handleQueryUpdateCallback: (row: MoviesStateProps, fetchQuery: FetchQuery) => void;
+  handleQueryUpdateCallback: (
+    row: MoviesStateProps,
+    fetchQuery: FetchQuery
+  ) => void;
 }) => {
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -50,7 +53,7 @@ export const MovieRow = ({
     const query = {
       ...rowData.fetchQuery,
       sort_by: "vote_average.desc",
-      with_genres: [120,15],
+      with_genres: [120, 15],
     } as FetchQuery;
 
     handleQueryUpdateCallback(rowData, query);
