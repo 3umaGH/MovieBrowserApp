@@ -121,10 +121,6 @@ export const MovieRow = ({
               <MovieSkeleton />
               <MovieSkeleton />
               <MovieSkeleton />
-              <MovieSkeleton />
-              <MovieSkeleton />
-              <MovieSkeleton />
-              <MovieSkeleton />
             </>
           )
         )}
