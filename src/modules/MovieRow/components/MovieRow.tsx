@@ -50,6 +50,7 @@ export const MovieRow = ({
     const query = {
       ...movieRow.fetchQuery,
       sort_by: "vote_average.desc",
+      with_genres: "120",
     } as FetchQuery;
 
     handleQueryUpdate(movieRow, query);
@@ -71,18 +72,29 @@ export const MovieRow = ({
         id={`row_${title}`}
         style={{ cursor: "default", height: "500px" }}
       >
-        {movies &&
-          movies.length > 0 &&
-          movies.map((movie) => (
-            <MovieCard
-              key={`${movie.id}_${title + Math.random()}`}
-              movie={movie}
-            />
-          ))}
+        {movieRow.total_pages === 0 ? (
+          <div className=" flex mx-auto items-center font-roboto text-white  text-3xl">
+            <span style={{ textShadow: "3px 3px 8px rgba(0, 65, 125, 1)" }}>
+              No movies found with your criteria...
+            </span>
+          </div>
+        ) : (
+          movies &&
+          movies.length > 0 && (
+            <>
+              {movies.map((movie) => (
+                <MovieCard
+                  key={`${movie.id}_${title + Math.random()}`}
+                  movie={movie}
+                />
+              ))}
 
-        <MovieSkeleton />
-        <MovieSkeleton />
-        <MovieSkeleton />
+              <MovieSkeleton />
+              <MovieSkeleton />
+              <MovieSkeleton />
+            </>
+          )
+        )}
       </div>
     </>
   );
