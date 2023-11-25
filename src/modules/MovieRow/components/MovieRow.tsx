@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
-import { FetchQuery, Movie } from "../../common/constants";
+import { FetchQuery, Movie, SORT_BY_OPTIONS } from "../../common/constants";
 import { MovieCard } from "./MovieCard";
 import { MovieSkeleton } from "./MovieSkeleton";
 import { debounce } from "../../../utils";
 import { MoviesStateProps } from "../../MovieBrowser/components/MovieBrowser";
+import { QueryEditor } from "../../QueryEditor/components/QueryEditor";
 
 export const MovieRow = ({
   title,
@@ -23,6 +24,8 @@ export const MovieRow = ({
     fetchQuery: FetchQuery
   ) => void;
 }) => {
+  const [queryEditorVisible, setQueryEditorVisible] = useState(false);
+
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref);
@@ -49,25 +52,38 @@ export const MovieRow = ({
     }
   }, []);
 
-  const handleQueryUpdate = () => {
-    const query = {
+  const handleQueryUpdate = (query: FetchQuery) => {
+    /*const query = {
       ...rowData.fetchQuery,
-      sort_by: "vote_average.desc",
+      sort_by: "popularity.asc",
       with_genres: [120, 15],
-    } as FetchQuery;
+    } as FetchQuery;*/
 
     handleQueryUpdateCallback(rowData, query);
   };
 
+  const handleQueryEditorClose = () => {
+    setQueryEditorVisible(!queryEditorVisible);
+  };
+
   return (
-    <>
+    <div className="relative">
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
       <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
-      {/*<button onClick={handleQueryUpdate} className="bg-white">
-        set thing
-  </button>*/}
+      <button onClick={() => setQueryEditorVisible(true)} className="bg-white">
+        edit
+      </button>
+
+      {queryEditorVisible && (
+          <QueryEditor
+            currentQuery={rowData.fetchQuery}
+            onClose={handleQueryEditorClose}
+            newQueryCallback={handleQueryUpdate}
+          />
+        )}
+
       <div
         {...events}
         ref={ref}
@@ -75,6 +91,7 @@ export const MovieRow = ({
         id={`row_${title}`}
         style={{ cursor: "default", height: "500px" }}
       >
+    
         {rowData.total_pages === 0 ? (
           <div className=" flex mx-auto items-center font-roboto text-white  text-3xl">
             <span style={{ textShadow: "3px 3px 8px rgba(0, 65, 125, 1)" }}>
@@ -99,6 +116,6 @@ export const MovieRow = ({
           )
         )}
       </div>
-    </>
+    </div>
   );
 };

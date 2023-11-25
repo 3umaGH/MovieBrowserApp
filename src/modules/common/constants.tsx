@@ -88,8 +88,22 @@ export type Video = {
 };
 
 export type FetchQuery = {
-  sort_by?: "popularity.desc" | "vote_average.desc";
+  sort_by?: keyof typeof SORT_BY_OPTIONS;
   with_genres?: number[];
   origin_country?: string;
   page: number;
 };
+
+export enum SORT_BY_OPTIONS {
+  "popularity.desc" = "Popularity Descending",
+  "popularity.asc" = "Popularity Ascending",
+  "vote_average.desc" = "Vote Average Descending",
+  "vote_average.desc&vote_count.desc" = "Vote Average & Count Descending",
+  "vote_average.asc" = "Vote Average Ascending",
+  "vote_count.desc" = "Vote Count Descending",
+  "vote_count.asc" = "Vote Count Ascending",
+  "revenue.desc" = "Revenue Descending",
+  "revenue.asc" = "Revenue Ascending",
+  "primary_release_date.desc" = "Release Date Descending",
+  "primary_release_date.asc" = "Release Date Ascending",
+}
