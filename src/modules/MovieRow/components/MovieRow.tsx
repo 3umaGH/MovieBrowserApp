@@ -65,9 +65,9 @@ export const MovieRow = ({
       <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
-      <button onClick={handleQueryUpdate} className="bg-white">
+      {/*<button onClick={handleQueryUpdate} className="bg-white">
         set thing
-      </button>
+  </button>*/}
       <div
         {...events}
         ref={ref}
