@@ -18,7 +18,7 @@ export const MovieRow = ({
   title: string;
   movies: Movie[];
   rowData: MoviesStateProps;
-  scrollToEndCallback: () => void;
+  scrollToEndCallback: (row: MoviesStateProps) => void;
   handleQueryUpdateCallback: (
     row: MoviesStateProps,
     fetchQuery: FetchQuery
@@ -28,8 +28,13 @@ export const MovieRow = ({
 
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+  const rowDataRef = useRef(rowData);
+
   const { events } = useDraggable(ref);
-  const debouncedFetch = debounce(() => scrollToEndCallback(), 50);
+  const debouncedFetch = debounce(
+    () => scrollToEndCallback(rowDataRef.current),
+    50
+  );
 
   const handleScroll = (e: Event) => {
     const target = e.target as HTMLDivElement;
@@ -38,6 +43,10 @@ export const MovieRow = ({
 
     if (scrollPercentage >= 80) debouncedFetch();
   };
+
+  useEffect(() => {
+    rowDataRef.current = rowData;
+  }, [rowData]);
 
   useEffect(() => {
     const scrollContainer = document.getElementById(`row_${title}`);
