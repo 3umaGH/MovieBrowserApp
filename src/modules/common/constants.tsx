@@ -89,7 +89,7 @@ export type Video = {
 
 export type FetchQuery = {
   sort_by?: "popularity.desc" | "vote_average.desc";
-  with_genres?: string;
+  with_genres?: number[];
   origin_country?: string;
   page: number;
 };
