@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CDN_PATH, MovieDetailsType } from "../common/constants";
+import { CDN_PATH_W1280, CDN_PATH_W300, MovieDetailsType } from "../common/constants";
 
 import { DetailsActions } from "./DetailsActions";
 import { IoMdPlay } from "react-icons/io";
@@ -54,7 +54,7 @@ export const MovieDetails = ({
               className=" rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-none "
               src={
                 movie.poster_path
-                  ? CDN_PATH + movie.poster_path
+                  ? CDN_PATH_W1280 + movie.poster_path
                   : NOPOSTER_IMAGE
               }
               style={{ height: "100%", width: "100%" }}
@@ -69,10 +69,10 @@ export const MovieDetails = ({
               {movie.backdrop_path && (
                 <img
                   id="movie-background"
-                  src={CDN_PATH + movie.backdrop_path}
+                  src={CDN_PATH_W300 + movie.backdrop_path}
                   className="scale-animation w-full h-full -m-16 z-0"
                   style={{
-                    filter: "blur(6px) brightness(40%)",
+                    filter: "blur(2px) brightness(40%)",
                     transform: "scale(2)",
                   }}
                 ></img>
@@ -87,10 +87,10 @@ export const MovieDetails = ({
                 }}
               >
                 <img
-                  src={CDN_PATH + movie.backdrop_path}
+                  src={CDN_PATH_W1280 + movie.backdrop_path}
                   className="w-full poster-scale-animation hidden md:block"
                   style={{
-                    filter: "blur(2px) brightness(50%)",
+                    filter: "blur(0px) brightness(50%)",
                     borderRadius: "0px",
                   }}
                 />

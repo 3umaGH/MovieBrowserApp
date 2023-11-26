@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { CDN_PATH, Movie } from "../common/constants";
+import { CDN_PATH_W500, Movie } from "../common/constants";
 import { RootState } from "../../app/Store";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,9 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
           className="relative rounded-2xl w-80 overflow-auto cursor-pointer shadow-2xl"
           style={{
             backgroundImage: `url(${
-              movie.poster_path ? CDN_PATH + movie.poster_path : NOPOSTER_IMAGE
+              movie.poster_path
+                ? CDN_PATH_W500 + movie.poster_path
+                : NOPOSTER_IMAGE
             })`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
