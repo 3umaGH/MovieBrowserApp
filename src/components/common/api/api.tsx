@@ -38,7 +38,7 @@ export const fetchMoviesSortBy = async ({
   if (origin_country) query += `&with_origin_country=${origin_country}`;
 
   console.log(
-    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=R&with_original_language=en${query}`
+    `${API_BASE_URL}/discover/movie?api_key=${API_KEY}${query}`
   );
 
   return await axios.get(
