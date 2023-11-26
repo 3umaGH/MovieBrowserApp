@@ -6,8 +6,8 @@ import {
   COUNTRY_OPTIONS,
   FetchQuery,
   SORT_BY_OPTIONS,
-} from "../../common/constants";
-import { RootState } from "../../../app/Store";
+} from "../common/constants";
+import { RootState } from "../../app/Store";
 
 export const QueryEditor = ({
   currentQuery,

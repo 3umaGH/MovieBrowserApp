@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../app/Store";
+import { RootState } from "../../app/Store";
 
 import { useDraggable } from "react-use-draggable-scroll";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 // placeholder icons
 import { GenreTextButton } from "./GenreTextButton";
-import { FetchQuery } from "../../common/constants";
-import { AddMovieRowProps } from "../../MovieBrowser/components/MovieBrowser";
-import { fetchMoviesSortBy } from "../../common/api/api";
+import { FetchQuery } from "../common/constants";
+import { AddMovieRowProps } from "../MovieBrowser/MovieBrowser";
+import { fetchMoviesSortBy } from "../common/api/api";
 
 export const GenreSelector = ({
   addMovieRow,

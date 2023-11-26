@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { MovieRow } from "../../../modules/MovieRow/components/MovieRow";
-import { GenreSelector } from "../../GenreSelector/components/GenreSelector";
-import { FetchQuery, Movie } from "../../../modules/common/constants";
-import { Modal } from "../../../modules/MovieDetailsPopup/components/Modal";
+import { MovieRow } from "../MovieRow/MovieRow";
+import { GenreSelector } from "../GenreSelector/GenreSelector";
+import { FetchQuery, Movie } from "../common/constants";
+import { Modal } from "../MovieDetailsPopup/Modal";
 
 import { useParams, useNavigate } from "react-router-dom";
 import { AxiosResponse } from "axios";

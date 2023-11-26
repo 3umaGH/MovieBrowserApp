@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { CDN_PATH, MovieDetailsType } from "../../common/constants";
+import { CDN_PATH, MovieDetailsType } from "../common/constants";
 
 import { DetailsActions } from "./DetailsActions";
 import { IoMdPlay } from "react-icons/io";
 
-import { MovieScore } from "../../common/components/MovieScore";
+import { MovieScore } from "../common/components/MovieScore";
 import "react-circular-progressbar/dist/styles.css";
 
-import NOPOSTER_IMAGE from "../../../assets/no_poster.png";
+import NOPOSTER_IMAGE from "../../assets/no_poster.png";
 
 export const MovieDetails = ({
   movieData,

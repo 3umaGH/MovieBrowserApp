@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchMovieDetails } from "../../common/api/api";
-import { MovieDetailsType } from "../../common/constants";
+import { fetchMovieDetails } from "../common/api/api";
+import { MovieDetailsType } from "../common/constants";
 
 import { IoMdClose } from "react-icons/io";
-import { Spinner } from "../../common/components/Spinner";
+import { Spinner } from "../common/components/Spinner";
 import { MovieDetails } from "./MovieDetails";
 
 export const Modal = ({

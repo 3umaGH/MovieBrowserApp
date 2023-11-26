@@ -1,8 +1,8 @@
 import {
   fetchMoviesSortBy,
   fetchUpcomingMovies,
-} from "../modules/common/api/api";
-import { MovieBrowser } from "../modules/MovieBrowser/components/MovieBrowser";
+} from "../components/common/api/api";
+import { MovieBrowser } from "../components/MovieBrowser/MovieBrowser";
 
 export const MainPage = () => {
   return (

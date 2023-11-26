@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { IoIosMore } from "react-icons/io";
 import { useDraggable } from "react-use-draggable-scroll";
-import { FetchQuery, Movie } from "../../common/constants";
-import { debounce } from "../../../utils";
+import { FetchQuery, Movie } from "../common/constants";
+import { debounce } from "../../utils";
 import { MovieCard } from "./MovieCard";
 import { MovieSkeleton } from "./MovieSkeleton";
-import { MoviesRowProps } from "../../MovieBrowser/components/MovieBrowser";
-import { QueryEditor } from "../../QueryEditor/components/QueryEditor";
+import { MoviesRowProps } from "../MovieBrowser/MovieBrowser";
+import { QueryEditor } from "../QueryEditor/QueryEditor";
 
 export const MovieRow = ({
   title,
