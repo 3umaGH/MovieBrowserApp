@@ -93,7 +93,7 @@ export const QueryEditor = ({
         </div>
 
         <div
-          className="p-8 animate-fadein rounded-lg"
+          className="p-4 lg:p-8 animate-fadein rounded-lg"
           style={{ backgroundColor: "rgba(240,240,240,0.9)" }}
         >
           <div className="my-5 mt-2">
