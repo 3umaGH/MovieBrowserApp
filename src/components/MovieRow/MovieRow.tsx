@@ -65,6 +65,7 @@ export const MovieRow = ({
 
   const handleQueryUpdate = (query: FetchQuery) => {
     handleQueryUpdateCallback(rowData, query);
+    ref.current.scrollLeft = 0;
   };
 
   const handleQueryEditorClose = () => {
@@ -93,7 +94,10 @@ export const MovieRow = ({
           <IoIosMore
             size={26}
             color="white"
-            onClick={() => {setQueryEditorVisible(!queryEditorVisible), console.log("setting",!queryEditorVisible)}}
+            onClick={() => {
+              setQueryEditorVisible(!queryEditorVisible),
+                console.log("setting", !queryEditorVisible);
+            }}
           />
         </div>
       )}
@@ -106,7 +110,7 @@ export const MovieRow = ({
         style={{ cursor: "default", height: "500px" }}
       >
         {rowData.total_pages === 0 ? (
-          <div className=" flex mx-auto items-center font-roboto text-white text-3xl">
+          <div className="flex mx-auto items-center font-roboto text-white text-3xl">
             <span style={{ textShadow: "3px 3px 8px rgba(0, 65, 125, 1)" }}>
               No movies found with your criteria...
             </span>
