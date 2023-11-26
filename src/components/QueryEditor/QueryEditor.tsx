@@ -83,30 +83,63 @@ export const QueryEditor = ({
     <>
       <Backdrop />
       <div
-        className="absolute top-1/2 left-1/2 overflow-clip h-auto my-auto z-20"
+        className="absolute w-5/6 md:w-max top-1/2 left-1/2 overflow-clip h-auto my-auto z-20 "
         style={{
           transform: "translate(-50%, -50%)",
+          marginTop: "5.6rem",
         }}
       >
-        <div className="absolute top-0 -right-5 z-20 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer">
-          <IoMdClose color="black" size={30} onClick={onClose} />
+        <div className="absolute top-2 -right-3 z-20 hover:scale-150 active:scale-125 transition-transform mx-5 cursor-pointer">
+          <IoMdClose color="white" size={30} onClick={onClose} />
         </div>
 
         <div
-          className="p-4 lg:p-8 animate-fadein rounded-lg"
-          style={{ backgroundColor: "rgba(240,240,240,0.9)" }}
+          className="p-4 lg:p-8 animate-fadein rounded-lg bg-secondary"
+          //style={{ backgroundColor: "rgba(140,140,140,0.9)" }}
         >
-          <div className="my-5 mt-2">
-            <label htmlFor="sort_by">Sort By: </label>
+          <div className="mb-2 flex flex-col gap-2">
+            <label className="mr-4 font-roboto text-gray-200" htmlFor="sort_by">
+              Sort By:
+            </label>
 
             <select
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="sort_by"
               id="sort_by"
               value={formFields.sort_by}
               onChange={handleChange}
             >
               {Object.entries(SORT_BY_OPTIONS).map(([option, value]) => (
-                <option key={value} value={option}>
+                <option
+                  className="text-lg text-gray-300 font-roboto"
+                  key={value}
+                  value={option}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+
+            <label
+              className="mr-4 font-roboto text-gray-200"
+              htmlFor="origin_country"
+            >
+              Origin Country:
+            </label>
+
+            <select
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              name="origin_country"
+              id="origin_country"
+              value={formFields.origin_country || "ALL"}
+              onChange={handleChange}
+            >
+              {Object.entries(COUNTRY_OPTIONS).map(([option, value]) => (
+                <option
+                  className="text-lg text-gray-300 font-roboto"
+                  key={value}
+                  value={option}
+                >
                   {value}
                 </option>
               ))}
@@ -114,17 +147,20 @@ export const QueryEditor = ({
           </div>
 
           <div className="text-center">
-            <label htmlFor="genres">Genres:</label>
+            <label className="font-roboto text-gray-200" htmlFor="genres">
+              Genres:
+            </label>
           </div>
 
           <div
             id="genres"
-            className="overflow-auto border-gray-400 border-2 rounded-lg p-2 flex flex-wrap flex-col"
+            className="overflow-auto border-gray-400 border-2 rounded-lg py-2 px-4 flex flex-wrap flex-col"
             style={{ height: "240px" }}
           >
             {parameters.genres.map((genre) => (
               <div key={genre.name}>
                 <input
+                  className="mx-2 mr-[2px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-blue-500 checked:bg-blue-500 checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-blue-500 dark:checked:bg-blue-500 dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
                   type="checkbox"
                   value={genre.id}
                   id={genre.name}
@@ -133,27 +169,15 @@ export const QueryEditor = ({
                   }
                   onChange={handleCheckbox}
                 />
-                <label htmlFor={genre.name}>{genre.name}</label>
+                <label
+                  className="ms-2 text-sm font-roboto text-gray-200"
+                  htmlFor={genre.name}
+                >
+                  {genre.name}
+                </label>
                 <br />
               </div>
             ))}
-          </div>
-
-          <div className="my-5">
-            <label htmlFor="origin_country">Origin Country: </label>
-
-            <select
-              name="origin_country"
-              id="origin_country"
-              value={formFields.origin_country || "ALL"}
-              onChange={handleChange}
-            >
-              {Object.entries(COUNTRY_OPTIONS).map(([option, value]) => (
-                <option key={value} value={option}>
-                  {value}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
       </div>
