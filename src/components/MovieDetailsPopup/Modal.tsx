@@ -33,7 +33,7 @@ export const Modal = ({
   const Backdrop = () => {
     return (
       <div
-        className="absolute w-screen h-screen bg-black opacity-50 z-20"
+        className="absolute w-screen h-screen bg-black opacity-70 z-20"
         onClick={
           activeTrailerID
             ? () => setActiveTrailerID(undefined)
