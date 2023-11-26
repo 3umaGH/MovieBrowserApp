@@ -33,7 +33,7 @@ export const QueryEditor = ({
   const Backdrop = () => {
     return (
       <div
-        className="absolute w-screen h-full bg-black opacity-0 z-20"
+        className="absolute w-screen h-full bg-gray-900 opacity-30 z-20 blur-3xl"
         onClick={onClose}
       ></div>
     );
@@ -94,8 +94,8 @@ export const QueryEditor = ({
         </div>
 
         <div
-          className="p-4 lg:p-8 animate-fadein rounded-lg bg-secondary"
-          //style={{ backgroundColor: "rgba(140,140,140,0.9)" }}
+          className="p-4 lg:p-8 animate-fadein rounded-lg "
+          style={{ backgroundColor: "rgba(25, 25, 26,1)" }}
         >
           <div className="mb-2 flex flex-col gap-2">
             <label className="mr-4 font-roboto text-gray-200" htmlFor="sort_by">
@@ -154,7 +154,7 @@ export const QueryEditor = ({
 
           <div
             id="genres"
-            className="overflow-auto border-gray-400 border-2 rounded-lg py-2 px-4 flex flex-wrap flex-col"
+            className="overflow-auto border-gray-400 border-2 rounded-lg py-2 px-2 flex flex-wrap flex-col"
             style={{ height: "240px" }}
           >
             {parameters.genres.map((genre) => (

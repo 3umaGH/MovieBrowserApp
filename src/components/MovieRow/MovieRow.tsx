@@ -76,6 +76,14 @@ export const MovieRow = ({
   }
   return (
     <div className="relative">
+      {queryEditorVisible && (
+        <QueryEditor
+          currentQuery={rowData.fetchQuery}
+          onClose={handleQueryEditorClose}
+          newQueryCallback={handleQueryUpdate}
+        />
+      )}
+
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
       <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
@@ -85,17 +93,9 @@ export const MovieRow = ({
           <IoIosMore
             size={26}
             color="white"
-            onClick={() => setQueryEditorVisible(true)}
+            onClick={() => setQueryEditorVisible(!queryEditorVisible)}
           />
         </div>
-      )}
-
-      {queryEditorVisible && (
-        <QueryEditor
-          currentQuery={rowData.fetchQuery}
-          onClose={handleQueryEditorClose}
-          newQueryCallback={handleQueryUpdate}
-        />
       )}
 
       <div
@@ -106,7 +106,7 @@ export const MovieRow = ({
         style={{ cursor: "default", height: "500px" }}
       >
         {rowData.total_pages === 0 ? (
-          <div className=" flex mx-auto items-center font-roboto text-white  text-3xl">
+          <div className=" flex mx-auto items-center font-roboto text-white text-3xl">
             <span style={{ textShadow: "3px 3px 8px rgba(0, 65, 125, 1)" }}>
               No movies found with your criteria...
             </span>
