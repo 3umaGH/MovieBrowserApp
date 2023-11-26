@@ -130,7 +130,7 @@ export const MovieRow = ({
                 </>
               ) : (
                 <p className="text-white my-auto mx-6 min-w-max">
-                  No more movies with matching your criteria.
+                  No more movies matching your criteria.
                 </p>
               )}
             </>
