@@ -1,4 +1,7 @@
-export const CDN_PATH = import.meta.env.VITE_APP_CDN_PATH;
+export const CDN_PATH_W300 = import.meta.env.VITE_APP_CDN_PATH_W300;
+export const CDN_PATH_W500 = import.meta.env.VITE_APP_CDN_PATH_W500;
+export const CDN_PATH_W780 = import.meta.env.VITE_APP_CDN_PATH_W780;
+export const CDN_PATH_W1280 = import.meta.env.VITE_APP_CDN_PATH_W1280;
 
 type CommonMovieProperties = {
   adult: boolean;
