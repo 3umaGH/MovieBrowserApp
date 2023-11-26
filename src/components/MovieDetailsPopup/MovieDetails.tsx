@@ -180,7 +180,7 @@ export const MovieDetails = ({
                 {trailerVideos.length > 0 && (
                   <button
                     className="py-2 px-4 mt-2 bg-sky-800 text-sky-200 rounded-lg flex items-center justify-center 
-                  cursor-pointer hover:bg-sky-600 focus:ring-2 ring-sky-800 active:scale-75 transition-transform; text-xl mx-auto"
+                  cursor-pointer hover:bg-sky-600 focus:ring-2 ring-sky-800 active:scale-75 transition-transform; text-xl mx-auto shadow-2xl"
                     style={{ width: "120px" }}
                     onClick={handleViewTrailerClick}
                   >
