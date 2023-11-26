@@ -81,7 +81,7 @@ export const MovieRow = ({
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
       {allowQueryEditor && (
-        <div className="flex justify-center mx-auto cursor-pointer">
+        <div className="flex justify-center mx-auto cursor-pointer active:scale-100 hover:scale-150 transition-all duration-150">
           <IoIosMore
             size={26}
             color="white"
