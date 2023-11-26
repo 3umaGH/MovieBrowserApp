@@ -122,9 +122,17 @@ export const MovieRow = ({
                 />
               ))}
 
-              <MovieSkeleton />
-              <MovieSkeleton />
-              <MovieSkeleton />
+              {!(rowData.fetchQuery.page >= rowData.total_pages) ? (
+                <>
+                  <MovieSkeleton />
+                  <MovieSkeleton />
+                  <MovieSkeleton />
+                </>
+              ) : (
+                <p className="text-white my-auto mx-6 min-w-max">
+                  No more movies with matching your criteria.
+                </p>
+              )}
             </>
           )
         )}
