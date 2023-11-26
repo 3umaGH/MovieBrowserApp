@@ -74,7 +74,7 @@ export const MovieBrowser = ({
           allowQueryEditor: allowQueryEditor,
           movies: apiResponse.results,
           total_pages: apiResponse.total_pages,
-          fetchQuery: { ...fetchQuery, page: apiResponse.page },
+          fetchQuery: { ...fetchQuery, page: apiResponse.page, with_genres: [] },
           fetchFn: fetchFn,
         },
       ]);

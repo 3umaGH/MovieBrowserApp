@@ -8,6 +8,7 @@ import {
   SORT_BY_OPTIONS,
 } from "../common/constants";
 import { RootState } from "../../app/Store";
+import { objectsAreEqualIgnoringProperty } from "../../utils";
 
 export const QueryEditor = ({
   currentQuery,
@@ -76,7 +77,8 @@ export const QueryEditor = ({
         }),
     } as FetchQuery;
 
-    newQueryCallback(newQuery);
+    if (!objectsAreEqualIgnoringProperty(newQuery, currentQuery, "page"))
+      newQueryCallback(newQuery);
   }, [formFields]);
 
   return (
