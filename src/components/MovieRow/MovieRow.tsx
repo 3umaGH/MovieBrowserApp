@@ -86,7 +86,12 @@ export const MovieRow = ({
       )}
 
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
-      <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
+      <h2
+        className="text-center font-roboto text-5xl text-white"
+        style={{ textShadow: "1px 11px 20px rgba(0,0,0,1)" }}
+      >
+        {title}
+      </h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
       {allowQueryEditor && (
