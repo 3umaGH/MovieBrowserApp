@@ -44,7 +44,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
         />
 
         <div
-          className="flex flex-col px-4 opacity-0 -translate-y-16 group-hover:-translate-y-full group-hover:opacity-100 transition-all duration-500 text-slate-100 rounded-b-xl"
+          className="flex flex-col px-4 opacity-0 -translate-y-16 mt-px group-hover:-translate-y-full group-hover:opacity-100 transition-all duration-500 text-slate-100 rounded-b-xl"
           style={{
             width: "100%",
             height: "60%",
