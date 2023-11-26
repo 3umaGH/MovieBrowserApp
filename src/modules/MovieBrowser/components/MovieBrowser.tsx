@@ -37,6 +37,15 @@ type MovieBrowserProps = {
   }[];
 };
 
+export type AddMovieRowProps = {
+  title: string;
+  allowQueryEditor: boolean;
+  fetchFn: (
+    fetchQuery: FetchQuery
+  ) => Promise<AxiosResponse<MovieListApiResponse, any>>;
+  fetchQuery: FetchQuery;
+};
+
 export const MovieBrowser = ({
   genreSelector = true,
   defaultRows,
@@ -49,15 +58,13 @@ export const MovieBrowser = ({
 
   const div = useRef<HTMLDivElement>(null);
 
-  const addMovieRow = (
-    title: string,
-    allowQueryEditor: boolean,
-    fetch: (
-      fetchQuery: FetchQuery
-    ) => Promise<AxiosResponse<MovieListApiResponse, any>>,
-    fetchQuery: FetchQuery
-  ) => {
-    fetch(fetchQuery).then((response) => {
+  const addMovieRow = ({
+    title,
+    allowQueryEditor,
+    fetchFn,
+    fetchQuery,
+  }: AddMovieRowProps) => {
+    fetchFn(fetchQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
       setMovies((prevData: MoviesRowProps[] | undefined) => [
@@ -68,7 +75,7 @@ export const MovieBrowser = ({
           movies: apiResponse.results,
           total_pages: apiResponse.total_pages,
           fetchQuery: { ...fetchQuery, page: apiResponse.page },
-          fetchFn: fetch,
+          fetchFn: fetchFn,
         },
       ]);
 
@@ -128,12 +135,12 @@ export const MovieBrowser = ({
 
   useEffect(() => {
     defaultRows.forEach((row) =>
-      addMovieRow(
-        row.title,
-        row.allowQueryEditor || false,
-        row.fetchFn,
-        row.fetchQuery
-      )
+      addMovieRow({
+        title: row.title,
+        allowQueryEditor: row.allowQueryEditor || false,
+        fetchFn: row.fetchFn,
+        fetchQuery: row.fetchQuery,
+      })
     );
   }, []);
 

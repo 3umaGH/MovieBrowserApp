@@ -8,23 +8,18 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 // placeholder icons
 import { GenreTextButton } from "./GenreTextButton";
 import { FetchQuery } from "../../common/constants";
-import { AxiosResponse } from "axios";
-import { MovieListApiResponse } from "../../MovieBrowser/components/MovieBrowser";
+import { AddMovieRowProps } from "../../MovieBrowser/components/MovieBrowser";
 import { fetchMoviesSortBy } from "../../common/api/api";
 
 export const GenreSelector = ({
   addMovieRow,
 }: {
-  addMovieRow: (
-    title: string,
-    allowQueryEditor: boolean,
-
-    fetch: (
-      fetchQuery: FetchQuery
-    ) => Promise<AxiosResponse<MovieListApiResponse, any>>,
-
-    fetchQuery: FetchQuery
-  ) => void;
+  addMovieRow: ({
+    title,
+    allowQueryEditor,
+    fetchFn,
+    fetchQuery,
+  }: AddMovieRowProps) => void;
 }) => {
   const parameters = useSelector((state: RootState) => state.parameters);
   const [isCollapsed, setCollapsed] = useState(true);
@@ -39,7 +34,12 @@ export const GenreSelector = ({
   const handleButtonClick = (name: string, query: FetchQuery) => {
     if (activeButtons.includes(name)) return;
 
-    addMovieRow(`${name}`, true, fetchMoviesSortBy, query);
+    addMovieRow({
+      title: `${name}`,
+      allowQueryEditor: true,
+      fetchFn: fetchMoviesSortBy,
+      fetchQuery: query,
+    });
     setActiveButtons((prevArray) => [...prevArray, name]);
   };
 
