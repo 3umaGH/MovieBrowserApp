@@ -5,22 +5,24 @@ import { FetchQuery, Movie } from "../../common/constants";
 import { debounce } from "../../../utils";
 import { MovieCard } from "./MovieCard";
 import { MovieSkeleton } from "./MovieSkeleton";
-import { MoviesStateProps } from "../../MovieBrowser/components/MovieBrowser";
+import { MoviesRowProps } from "../../MovieBrowser/components/MovieBrowser";
 import { QueryEditor } from "../../QueryEditor/components/QueryEditor";
 
 export const MovieRow = ({
   title,
   movies,
   rowData,
+  allowQueryEditor,
   scrollToEndCallback,
   handleQueryUpdateCallback,
 }: {
   title: string;
   movies: Movie[];
-  rowData: MoviesStateProps;
-  scrollToEndCallback: (row: MoviesStateProps) => void;
+  rowData: MoviesRowProps;
+  allowQueryEditor: boolean;
+  scrollToEndCallback: (row: MoviesRowProps) => void;
   handleQueryUpdateCallback: (
-    row: MoviesStateProps,
+    row: MoviesRowProps,
     fetchQuery: FetchQuery
   ) => void;
 }) => {
@@ -78,13 +80,15 @@ export const MovieRow = ({
       <h2 className="text-center font-roboto text-5xl text-white">{title}</h2>
       <hr className=" mx-auto my-8 w-1/2 text-center h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
 
-      <div className="flex justify-center mx-auto cursor-pointer">
-        <IoIosMore
-          size={26}
-          color="white"
-          onClick={() => setQueryEditorVisible(true)}
-        />
-      </div>
+      {allowQueryEditor && (
+        <div className="flex justify-center mx-auto cursor-pointer">
+          <IoIosMore
+            size={26}
+            color="white"
+            onClick={() => setQueryEditorVisible(true)}
+          />
+        </div>
+      )}
 
       {queryEditorVisible && (
         <QueryEditor

@@ -17,6 +17,7 @@ export const GenreSelector = ({
 }: {
   addMovieRow: (
     title: string,
+    allowQueryEditor: boolean,
 
     fetch: (
       fetchQuery: FetchQuery
@@ -38,7 +39,7 @@ export const GenreSelector = ({
   const handleButtonClick = (name: string, query: FetchQuery) => {
     if (activeButtons.includes(name)) return;
 
-    addMovieRow(`${name}`, fetchMoviesSortBy, query);
+    addMovieRow(`${name}`, true, fetchMoviesSortBy, query);
     setActiveButtons((prevArray) => [...prevArray, name]);
   };
 

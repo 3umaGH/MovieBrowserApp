@@ -7,8 +7,9 @@ import { Modal } from "../../../modules/MovieDetailsPopup/components/Modal";
 import { useParams, useNavigate } from "react-router-dom";
 import { AxiosResponse } from "axios";
 
-export type MoviesStateProps = {
+export type MoviesRowProps = {
   title: string;
+  allowQueryEditor: boolean;
   movies: Movie[];
   total_pages: number;
   fetchQuery: FetchQuery;
@@ -28,6 +29,7 @@ type MovieBrowserProps = {
   genreSelector?: boolean;
   defaultRows: {
     title: string;
+    allowQueryEditor?: boolean;
     fetchFn: (
       fetchQuery: FetchQuery
     ) => Promise<AxiosResponse<MovieListApiResponse, any>>;
@@ -39,7 +41,7 @@ export const MovieBrowser = ({
   genreSelector = true,
   defaultRows,
 }: MovieBrowserProps) => {
-  const [moviesList, setMovies] = useState<MoviesStateProps[]>();
+  const [moviesList, setMovies] = useState<MoviesRowProps[]>();
   const [detailsMovieID, setDetailsMovieID] = useState<number>();
 
   const navigate = useNavigate();
@@ -49,6 +51,7 @@ export const MovieBrowser = ({
 
   const addMovieRow = (
     title: string,
+    allowQueryEditor: boolean,
     fetch: (
       fetchQuery: FetchQuery
     ) => Promise<AxiosResponse<MovieListApiResponse, any>>,
@@ -57,10 +60,11 @@ export const MovieBrowser = ({
     fetch(fetchQuery).then((response) => {
       const apiResponse = response.data as MovieListApiResponse;
 
-      setMovies((prevData: MoviesStateProps[] | undefined) => [
+      setMovies((prevData: MoviesRowProps[] | undefined) => [
         ...(prevData || []),
         {
           title: title,
+          allowQueryEditor: allowQueryEditor,
           movies: apiResponse.results,
           total_pages: apiResponse.total_pages,
           fetchQuery: { ...fetchQuery, page: apiResponse.page },
@@ -72,7 +76,7 @@ export const MovieBrowser = ({
     });
   };
 
-  const fetchNextPage = (row: MoviesStateProps) => {
+  const fetchNextPage = (row: MoviesRowProps) => {
     if (row.fetchQuery.page >= row.total_pages) return;
 
     const newQuery = { ...row.fetchQuery, page: ++row.fetchQuery.page };
@@ -95,7 +99,7 @@ export const MovieBrowser = ({
   };
 
   const handleQueryUpdate = (
-    row: MoviesStateProps,
+    row: MoviesRowProps,
     newFetchQuery: FetchQuery
   ) => {
     row.fetchFn(newFetchQuery).then((response) => {
@@ -124,7 +128,12 @@ export const MovieBrowser = ({
 
   useEffect(() => {
     defaultRows.forEach((row) =>
-      addMovieRow(row.title, row.fetchFn, row.fetchQuery)
+      addMovieRow(
+        row.title,
+        row.allowQueryEditor || false,
+        row.fetchFn,
+        row.fetchQuery
+      )
     );
   }, []);
 
@@ -161,6 +170,7 @@ export const MovieBrowser = ({
                 title={row.title}
                 movies={row.movies || []}
                 rowData={row}
+                allowQueryEditor={row.allowQueryEditor}
                 scrollToEndCallback={fetchNextPage}
                 handleQueryUpdateCallback={handleQueryUpdate}
               />
