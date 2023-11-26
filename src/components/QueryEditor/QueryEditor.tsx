@@ -93,10 +93,10 @@ export const QueryEditor = ({
         </div>
 
         <div
-          className="p-8"
+          className="p-8 animate-fadein rounded-lg"
           style={{ backgroundColor: "rgba(240,240,240,0.9)" }}
         >
-          <div className="my-5">
+          <div className="my-5 mt-2">
             <label htmlFor="sort_by">Sort By: </label>
 
             <select
@@ -113,7 +113,15 @@ export const QueryEditor = ({
             </select>
           </div>
 
-          <div className=" h-72 overflow-auto">
+          <div className="text-center">
+            <label htmlFor="genres">Genres:</label>
+          </div>
+
+          <div
+            id="genres"
+            className="overflow-auto border-gray-400 border-2 rounded-lg p-2 flex flex-wrap flex-col"
+            style={{ height: "240px" }}
+          >
             {parameters.genres.map((genre) => (
               <div key={genre.name}>
                 <input
